@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Stackly Organic Luxury Skincare</title>
+  <meta name="description" content="Sign in to your Stackly customer or administration account to manage skincare orders and rituals.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Prevent default eye toggle in Microsoft Edge on password inputs */
+    input[type="password"]::-ms-reveal,
+    input[type="password"]::-ms-clear {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      pointer-events: none !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader Screen (Luxury Botanical Skincare) -->
+  <div class="site-preloader" id="site-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-aura"></div>
+      <div class="preloader-logo">
+        <i class="fa-solid fa-spa"></i>
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-tagline">BOTANICAL DERMAL RITUALS</div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="auth-split-wrapper">
+    <!-- Visual Skincare Showcase Side -->
+    <div class="auth-visual-side">
+      <div class="auth-visual-bg">
+        <img src="assets/images/hero_facial.webp" alt="Luxury botanical skincare spa facial treatment" width="1000" height="558" loading="eager">
+      </div>
+      <div class="auth-visual-overlay"></div>
+
+      <!-- Top Branding in Visual Side -->
+      <div class="auth-visual-content">
+       
+        <span class="slide-tag">Pure Botanical Skincare</span>
+        <h2 style="font-family: var(--font-serif); font-size: 42px; font-weight: 500; text-transform: uppercase; line-height: 1.1; margin-bottom: 16px;">
+          Nourish Your Natural Radiance
+        </h2>
+        <p style="font-size: 14px; color: #d8d3cc; max-width: 440px; line-height: 1.7;">
+          Unlock access to your customized dermal diagnostics, active ritual tracking, and member-exclusive botanical launches.
+        </p>
+
+        <!-- Skincare Shopping Perks Badges -->
+        <div class="auth-visual-badges">
+          <div class="auth-benefit-badge">
+            <i class="fa-solid fa-sparkles"></i> 15% Off First Ritual
+          </div>
+          <div class="auth-benefit-badge">
+            <i class="fa-solid fa-truck-fast"></i> Free Worldwide Delivery
+          </div>
+          <div class="auth-benefit-badge">
+            <i class="fa-solid fa-certificate"></i> Dermatologist Tested
+          </div>
+          <div class="auth-benefit-badge">
+            <i class="fa-solid fa-seedling"></i> 100% Cold-Pressed Botanicals
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Testimonial Snippet -->
+      <div class="auth-visual-content" style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 24px; margin-top: 36px;">
+        <div style="color: var(--color-accent-gold); font-size: 13px; margin-bottom: 8px;">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p style="font-size: 13px; font-style: italic; color: #ede9e3; margin-bottom: 8px;">
+          &ldquo;The Lily Ritual set transformed my reactive skin in 10 days. Managing my monthly deliveries on Stackly is so seamless.&rdquo;
+        </p>
+        <span style="font-size: 12px; font-weight: 600; color: #ffffff;">&mdash; Eleanor V., Verified Glow Member</span>
+      </div>
+    </div>
+
+    <!-- Auth Form Side -->
+    <div class="auth-form-side">
+      <!-- Back to Home Button -->
+      <a href="index.html" class="btn-back-home" aria-label="Return to Stackly Home">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Store</span>
+      </a>
+
+      <!-- Brand Logo for Auth Page -->
+      <div class="auth-form-brand-logo" style="margin-bottom: 24px;">
+        <a href="index.html" class="logo" aria-label="Stackly Homepage">
+          <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img">
+        </a>
+      </div>
+
+      <!-- Form Header -->
+      <div style="margin-bottom: 28px;">
+        <span class="section-tag" style="margin-bottom: 8px;">Customer & Portal Access</span>
+        <h1 style="font-family: var(--font-serif); font-size: 38px; font-weight: 500; text-transform: uppercase; color: var(--color-text-dark); margin-bottom: 8px;">
+          Welcome Back
+        </h1>
+        <p style="font-size: 13px; color: var(--color-text-muted);">
+          Please enter your credentials to access your skincare dashboard.
+        </p>
+      </div>
+
+      <!-- Role Selector Toggle: Admin / User -->
+      <div class="role-selector-wrap">
+        <span class="role-selector-label">Select Access Role:</span>
+        <div class="role-toggle-group" id="role-toggle-group">
+          <button type="button" class="role-btn active" data-role="user" id="role-user-btn">
+            <i class="fa-solid fa-user"></i>
+            <span>User / Customer</span>
+          </button>
+          <button type="button" class="role-btn" data-role="admin" id="role-admin-btn">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Admin Portal</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Login Form with Custom Red Inline Validation (No Native Popups) -->
+      <form id="auth-login-form" novalidate>
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="login-email" class="form-label">Email Address *</label>
+          <input 
+            type="email" 
+            id="login-email" 
+            class="form-control" 
+            placeholder="you@domain.com" 
+            autocomplete="off"
+            value=""
+          >
+          <div class="error-message" id="email-error"></div>
+        </div>
+
+        <!-- Password Field with Eye Toggle -->
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label for="login-password" class="form-label" style="margin-bottom: 0;">Password *</label>
+            <a href="404.html" class="form-hint" style="color: var(--color-forest-green); font-weight: 600; text-decoration: underline;">Forgot Password?</a>
+          </div>
+          <div class="pwd-field-wrap">
+            <input 
+              type="password" 
+              id="login-password" 
+              class="form-control" 
+              placeholder="Enter your password" 
+              autocomplete="current-password"
+            >
+            <button type="button" class="pwd-toggle-btn" id="pwd-toggle-btn" aria-label="Toggle password visibility">
+              <i class="fa-regular fa-eye" id="pwd-eye-icon"></i>
+            </button>
+          </div>
+          <div class="error-message" id="password-error"></div>
+        </div>
+
+        <!-- Remember Me Checkbox -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; font-size: 13px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--color-text-body);">
+            <input type="checkbox" id="remember-me" checked style="accent-color: var(--color-forest-green); width: 16px; height: 16px;">
+            <span>Remember this device</span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-form-submit" id="login-submit-btn">
+          <span id="btn-submit-text">Sign In to User Dashboard</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <!-- Bottom Redirect Link -->
+      <p class="auth-footer-text">
+        New to Stackly? <a href="signup.html">Create a Customer Account</a>
+      </p>
+
+    
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div class="toast-notice" id="toast-notice" role="alert">
+    <span class="toast-icon"><i class="fa-solid fa-circle-check"></i></span>
+    <span class="toast-message" id="toast-message">Logged in successfully</span>
+  </div>
+
+  <script>
+    // Always go to top on page refresh/reload
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.addEventListener('load', () => { window.scrollTo(0, 0); });
+
+    // State
+    let selectedRole = 'user'; // 'user' or 'admin'
+
+    // Elements
+    const roleUserBtn = document.getElementById('role-user-btn');
+    const roleAdminBtn = document.getElementById('role-admin-btn');
+    const btnSubmitText = document.getElementById('btn-submit-text');
+    const emailInput = document.getElementById('login-email');
+    const passwordInput = document.getElementById('login-password');
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+    const pwdToggleBtn = document.getElementById('pwd-toggle-btn');
+    const pwdEyeIcon = document.getElementById('pwd-eye-icon');
+    const form = document.getElementById('auth-login-form');
+    const toastNotice = document.getElementById('toast-notice');
+    const toastMessage = document.getElementById('toast-message');
+
+    // Role Switching
+    roleUserBtn.addEventListener('click', () => {
+      selectedRole = 'user';
+      roleUserBtn.classList.add('active');
+      roleAdminBtn.classList.remove('active');
+      btnSubmitText.textContent = 'Sign In to User Dashboard';
+    });
+
+    roleAdminBtn.addEventListener('click', () => {
+      selectedRole = 'admin';
+      roleAdminBtn.classList.add('active');
+      roleUserBtn.classList.remove('active');
+      btnSubmitText.textContent = 'Sign In to Admin Dashboard';
+    });
+
+    // Password Eye Toggle
+    pwdToggleBtn.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        pwdEyeIcon.classList.remove('fa-eye');
+        pwdEyeIcon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        pwdEyeIcon.classList.remove('fa-eye-slash');
+        pwdEyeIcon.classList.add('fa-eye');
+      }
+    });
+
+    // Custom Inline Validation (No browser native popups, red error, real-time removal)
+    function validateEmail() {
+      const val = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!val) {
+        showError(emailInput, emailError, 'Email address is required.');
+        return false;
+      } else if (!emailRegex.test(val)) {
+        showError(emailInput, emailError, 'Please enter a valid email address.');
+        return false;
+      }
+      clearError(emailInput, emailError);
+      return true;
+    }
+
+    function validatePassword() {
+      const val = passwordInput.value;
+      if (!val) {
+        showError(passwordInput, passwordError, 'Password is required.');
+        return false;
+      } else if (val.length < 8) {
+        showError(passwordInput, passwordError, 'Password must be at least 8 characters.');
+        return false;
+      }
+      clearError(passwordInput, passwordError);
+      return true;
+    }
+
+    function showError(input, errorElem, message) {
+      input.classList.add('is-invalid');
+      errorElem.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${message}`;
+      errorElem.classList.add('visible');
+    }
+
+    function clearError(input, errorElem) {
+      input.classList.remove('is-invalid');
+      errorElem.classList.remove('visible');
+      errorElem.textContent = '';
+    }
+
+    // Real-time error removal when user starts typing valid value
+    emailInput.addEventListener('input', () => {
+      if (emailInput.classList.contains('is-invalid')) {
+        validateEmail();
+      }
+    });
+
+    passwordInput.addEventListener('input', () => {
+      if (passwordInput.classList.contains('is-invalid')) {
+        validatePassword();
+      }
+    });
+
+    // Ensure email input is always empty by default on load (Turn 17 requirement)
+    window.addEventListener('DOMContentLoaded', () => {
+      if (emailInput) {
+        emailInput.value = '';
+      }
+      const savedRole = localStorage.getItem('stackly_auth_role');
+      if (savedRole === 'admin') {
+        selectedRole = 'admin';
+        roleAdminBtn.classList.add('active');
+        roleUserBtn.classList.remove('active');
+        btnSubmitText.textContent = 'Sign In to Admin Dashboard';
+      }
+    });
+
+    // Form Submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const isEmailValid = validateEmail();
+      const isPasswordValid = validatePassword();
+
+      if (isEmailValid && isPasswordValid) {
+        const enteredEmail = emailInput.value.trim();
+        const roleLabel = selectedRole === 'admin' ? 'Admin Portal' : 'User / Customer';
+
+        // Persist entered email and selected role to localStorage
+        localStorage.setItem('stackly_auth_email', enteredEmail);
+        localStorage.setItem('stackly_auth_role', selectedRole);
+        localStorage.setItem('stackly_auth_role_name', roleLabel);
+
+        showToast(`Welcome back! Redirecting to ${selectedRole === 'admin' ? 'Admin' : 'User'} Dashboard...`);
+        setTimeout(() => {
+          if (selectedRole === 'admin') {
+            window.location.href = 'admin-dashboard.html';
+          } else {
+            window.location.href = 'dashboard.html';
+          }
+        }, 1200);
+      }
+    });
+
+    // Preloader Dismissal (< 2s)
+    const sitePreloader = document.getElementById("site-preloader");
+    if (sitePreloader) {
+      setTimeout(() => {
+        sitePreloader.classList.add("fade-out");
+        setTimeout(() => {
+          if (sitePreloader.parentNode) sitePreloader.parentNode.removeChild(sitePreloader);
+        }, 500);
+      }, 1350);
+    }
+
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toastNotice.classList.add('show');
+      setTimeout(() => { toastNotice.classList.remove('show'); }, 3500);
+    }
+  </script>
+</body>
+</html>

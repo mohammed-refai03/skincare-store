@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Bag &amp; Ritual Checkout | Stackly Luxury Skincare</title>
+<meta content="Review your curated botanical skincare formulations and enjoy complimentary cold-chain express delivery on orders over $75." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Font Awesome 6.5.1 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- AOS Animation Library -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+<!-- Core Stylesheet -->
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+  <!-- Preloader Screen (Luxury Botanical Skincare) -->
+  <div class="site-preloader" id="site-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-aura"></div>
+      <div class="preloader-logo">
+        <i class="fa-solid fa-spa"></i>
+      </div>
+      <div class="preloader-brand">STACKLY</div>
+      <div class="preloader-tagline">BOTANICAL DERMAL RITUALS</div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+<!-- Global Sticky Navbar -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo" aria-label="Stackly Homepage">
+        <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="our-mission.html" class="nav-link">Our Mission</a>
+        <a href="buying-guide.html" class="nav-link">Buying Guide</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="nav-actions">
+        <!-- Direct Cart Link -->
+        <a href="cart.html" class="nav-action-btn cart-btn" id="nav-cart-btn" aria-label="View Shopping Bag">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cart-counter">0</span>
+        </a>
+
+        <!-- Login Button -->
+        <a href="login.html" class="btn-login" aria-label="Login to Stackly">
+          <i class="fa-solid fa-user"></i>
+          <span>Login</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <!-- Mobile Navigation Drawer (Full Screen) -->
+  <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo" aria-label="Stackly Homepage">
+        <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img">
+      </a>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close navigation menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="index.html" class="mobile-nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="shop.html" class="mobile-nav-link"><span>Shop</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="our-mission.html" class="mobile-nav-link"><span>Our Mission</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="buying-guide.html" class="mobile-nav-link"><span>Buying Guide</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link"><span>Contact</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="cart.html" class="mobile-nav-link active"><span>Cart</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="login.html" class="btn-login" style="margin-top: 16px; justify-content: center;">
+        <i class="fa-solid fa-user"></i> <span>Login</span>
+      </a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <p class="mobile-drawer-brand">STACKLY BOTANICAL LUXURY</p>
+      <p class="mobile-drawer-copy">&copy; 2026 Stackly Inc. All rights reserved.</p>
+    </div>
+  </nav>
+
+  <main>
+<!-- Page Hero Banner with Botanical Background -->
+<section class="page-hero cart-page-hero">
+<div class="cart-hero-overlay"></div>
+<div class="container" data-aos="fade-up">
+<span class="section-tag">Pure Botanical Radiance</span>
+<h1 class="page-hero-title">Your Shopping Bag</h1>
+<p class="page-hero-desc">
+          Review your curated organic treatments and prepare for mindful, carbon-neutral cold-chain dispatch.
+        </p>
+</div>
+</section>
+<!-- Main Cart Content Section -->
+<section class="cart-page-section">
+<div class="container">
+
+<!-- Two Column Cart Grid -->
+<div class="cart-layout-grid" id="cart-main-grid-wrap">
+<!-- Left Column: Cart Formulations Master List -->
+<div class="cart-main-card" data-aos="fade-up">
+<div class="cart-main-header">
+<h2>Formulations in Bag (<span id="cart-items-count-display">2</span>)</h2>
+<button class="cart-clear-btn" onclick="clearEntireCart()" type="button">
+<i class="fa-solid fa-trash-can"></i> Clear All
+              </button>
+</div>
+<!-- Table Header Row -->
+<div class="cart-table-head">
+<span>Product Formulation</span>
+<span>Unit Price</span>
+<span style="text-align: center;">Quantity</span>
+<span style="text-align: right;">Total</span>
+<span></span>
+</div>
+<!-- Dynamic Cart Items Container -->
+<div id="cart-page-items-container">
+<!-- Rendered via JavaScript -->
+</div>
+<!-- Bottom Left Actions & Order Note -->
+<div class="cart-bottom-actions">
+<a class="btn-secondary" href="shop.html" style="padding: 10px 20px; font-size: 12px; display: inline-flex; align-items: center; gap: 8px;">
+<i class="fa-solid fa-arrow-left"></i> Continue Shopping
+              </a>
+<div style="font-size: 12px; color: var(--color-text-muted); display: flex; align-items: center; gap: 6px;">
+<i class="fa-solid fa-leaf" style="color: var(--color-forest-green);"></i>
+<span>Fresh sterile batching guaranteed on every shipment</span>
+</div>
+</div>
+
+</div>
+<!-- Right Column: Order Summary Card -->
+<div class="cart-summary-card" data-aos="fade-up" data-aos-delay="100">
+<h3 class="cart-summary-title">Order Summary</h3>
+<div class="summary-line-row">
+<span>Bag Subtotal</span>
+<span id="cart-page-subtotal">$92.00</span>
+</div>
+<div class="summary-line-row" id="cart-page-discount-row" style="display: none;">
+<span>Voucher Discount (<span id="cart-discount-code-tag">RADIANCE</span>)</span>
+<span id="cart-page-discount">-$0.00</span>
+</div>
+<div class="summary-line-row">
+<span>Cold-Chain Express Shipping</span>
+<span id="cart-page-shipping-fee" style="color: var(--color-forest-green); font-weight: 700;">FREE</span>
+</div>
+<div class="summary-line-row">
+<span>Estimated Dermal Sales Tax (5%)</span>
+<span id="cart-page-tax">$4.60</span>
+</div>
+<div class="summary-divider"></div>
+<div class="summary-total-row">
+<span class="summary-total-label">Estimated Total</span>
+<span class="summary-total-amount" id="cart-page-total">$96.60</span>
+</div>
+<!-- Voucher Discount Promo Input -->
+<div class="promo-box-wrapper">
+
+<div class="promo-message-box" id="promo-message-box"></div>
+</div>
+<!-- Checkout Primary Button -->
+<button class="btn-checkout-page" onclick="window.location.href='404.html'" type="button">
+<i class="fa-solid fa-lock"></i>
+<span>Proceed to Checkout</span>
+</button>
+<!-- Trust Badges & Guarantee List -->
+<div class="cart-trust-badges">
+<div class="cart-trust-item">
+<i class="fa-solid fa-shield-halved"></i>
+<span>256-Bit SSL Encrypted Bank Checkout</span>
+</div>
+<div class="cart-trust-item">
+<i class="fa-solid fa-bottle-droplet"></i>
+<span>100% Certified Organic &amp; Cold-Extracted</span>
+</div>
+<div class="cart-trust-item">
+<i class="fa-solid fa-leaf"></i>
+<span>Zero-Waste Carbon-Neutral Packaging</span>
+</div>
+<div class="cart-trust-item">
+<i class="fa-solid fa-rotate-left"></i>
+<span>30-Day Dermal Radiance Guarantee</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty Cart State Display -->
+<div class="cart-empty-view" id="cart-page-empty-view">
+<div class="cart-empty-icon">
+<i class="fa-solid fa-bag-shopping"></i>
+</div>
+<h2 class="cart-empty-title">Your Botanical Bag is Empty</h2>
+<p class="cart-empty-desc">
+            Your skincare vanity shelf is awaiting our freshly batched, cold-pressed botanical extractions. Explore our award-winning formulations below.
+          </p>
+<a class="btn-primary" href="shop.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;">
+<i class="fa-solid fa-spa"></i> Discover Signature Formulations
+          </a>
+</div>
+<!-- Frequently Paired Add-ons Section -->
+<div class="cart-addons-section" data-aos="fade-up" id="cart-addons-section">
+<h3 class="cart-addons-heading">Frequently Paired Ritual Formulations</h3>
+<p class="cart-addons-sub">Complete your daily skincare ritual with these customer-favorite botanical essentials.</p>
+<div class="cart-addons-grid">
+<!-- Addon 1 -->
+<div class="cart-addon-card">
+<div class="cart-addon-thumb">
+<img alt="Rejuvenating Jade Ritual Set" src="assets/images/product_roller_set.webp"/>
+</div>
+<div class="cart-addon-info">
+<h5>Rejuvenating Jade Set</h5>
+<span>$62.00</span>
+</div>
+<button class="cart-addon-btn" onclick="addAddonToCart(4)" type="button"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+</div>
+<!-- Addon 2 -->
+<div class="cart-addon-card">
+<div class="cart-addon-thumb">
+<img alt="Botanical Glow Facial Oil" src="assets/images/product_oil.webp"/>
+</div>
+<div class="cart-addon-info">
+<h5>Botanical Glow Oil</h5>
+<span>$48.00</span>
+</div>
+<button class="cart-addon-btn" onclick="addAddonToCart(3)" type="button"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+</div>
+<!-- Addon 3 -->
+<div class="cart-addon-card">
+<div class="cart-addon-thumb">
+<img alt="The Lily Ritual Set" src="assets/images/lily_ritual_set.webp"/>
+</div>
+<div class="cart-addon-info">
+<h5>The Lily Ritual Set</h5>
+<span>$89.00</span>
+</div>
+<button class="cart-addon-btn" onclick="addAddonToCart(5)" type="button"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Checkout Simulation Modal -->
+<div class="checkout-modal-backdrop" id="checkout-modal">
+<div class="checkout-modal-content">
+<div id="checkout-step-1">
+<div class="checkout-modal-icon">
+<i class="fa-solid fa-lock"></i>
+</div>
+<h3 style="font-family: var(--font-serif); font-size: 24px; color: var(--color-text-dark); margin-bottom: 8px;">
+          Confirm Your Order
+        </h3>
+<p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 20px;">
+          Review your cold-chain shipment details before laboratory dispatch.
+        </p>
+<!-- Order Summary Pill -->
+<div style="background-color: var(--color-bg-stone); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 16px; text-align: left; margin-bottom: 20px; font-size: 12.5px;">
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<span style="color: var(--color-text-muted);">Delivery Destination:</span>
+<strong>MMR Complex, Salem TN 636008</strong>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<span style="color: var(--color-text-muted);">Courier Service:</span>
+<span style="color: var(--color-forest-green); font-weight: 700;">FedEx Express (Cold-Chain)</span>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<span style="color: var(--color-text-muted);">Payment Method:</span>
+<span>Visa •••• 4242 (Stripe SSL)</span>
+</div>
+<div style="display: flex; justify-content: space-between; padding-top: 6px; border-top: 1px dashed var(--color-border-light); font-weight: 700;">
+<span>Final Charged Total:</span>
+<span id="modal-charged-total" style="color: var(--color-forest-green); font-size: 15px;">$96.60</span>
+</div>
+</div>
+<div style="display: flex; gap: 10px;">
+<button class="btn-secondary" onclick="closeCheckoutModal()" style="flex: 1; padding: 12px;" type="button">Cancel</button>
+<button class="btn-primary" onclick="confirmAndPlaceOrder()" style="flex: 1.5; padding: 12px;" type="button">
+<i class="fa-solid fa-check"></i> Place Ritual Order
+          </button>
+</div>
+</div>
+<!-- Step 2: Order Placed Success -->
+<div id="checkout-step-2" style="display: none;">
+<div class="checkout-modal-icon" style="background-color: var(--color-forest-green); color: #ffffff;">
+<i class="fa-solid fa-check"></i>
+</div>
+<span class="badge-pill" style="margin-bottom: 12px; background-color: var(--color-forest-green-light); color: var(--color-forest-green); font-weight: 700; padding: 6px 14px; border-radius: var(--radius-full); font-size: 11px;">
+          ORDER CONFIRMED • #STK-94028
+        </span>
+<h3 style="font-family: var(--font-serif); font-size: 24px; color: var(--color-text-dark); margin: 8px 0;">
+          Your Radiance Is on Its Way
+        </h3>
+<p style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 24px;">
+          Thank you for choosing Stackly. Your fresh formulations are now being sterile cold-pressed at our Salem laboratory and will dispatch within 24 hours.
+        </p>
+<div style="display: flex; gap: 10px;">
+<a class="btn-primary" href="dashboard.html" style="flex: 1; padding: 12px; font-size: 12px;">
+<i class="fa-solid fa-box-open"></i> Track in Dashboard
+          </a>
+<a class="btn-secondary" href="index.html" style="flex: 1; padding: 12px; font-size: 12px;">
+            Return to Store
+          </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Footer (Guideline #3) -->
+<footer class="site-footer" id="footer">
+<div class="container">
+<div class="footer-grid-4col">
+<!-- Column 1 — Brand Information -->
+<div class="footer-brand">
+<a class="logo footer-logo" href="index.html" aria-label="Stackly Homepage">
+  <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img brand-logo-light">
+</a>
+<p class="footer-about">
+            Consciously formulated organic skincare merging pure cold-pressed botanical extracts with clean clinical performance to honor your skin's natural beauty.
+          </p>
+<div class="footer-socials">
+<a aria-label="Instagram" class="social-icon" href="404.html">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a aria-label="Facebook" class="social-icon" href="404.html">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+<a aria-label="Twitter" class="social-icon" href="404.html">
+<i class="fa-brands fa-x-twitter"></i>
+</a>
+<a aria-label="Pinterest" class="social-icon" href="404.html">
+<i class="fa-brands fa-pinterest-p"></i>
+</a>
+<a aria-label="LinkedIn" class="social-icon" href="404.html">
+<i class="fa-brands fa-linkedin-in"></i>
+</a>
+</div>
+</div>
+        <!-- Column 2 — Quick Links (Home, Shop, Our Mission, Buying Guide, Contact) -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li><a href="shop.html"><i class="fa-solid fa-angle-right"></i> Shop</a></li>
+            <li><a href="our-mission.html"><i class="fa-solid fa-angle-right"></i> Our Mission</a></li>
+            <li><a href="buying-guide.html"><i class="fa-solid fa-angle-right"></i> Buying Guide</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+<!-- Column 3 — Policies (Privacy Policy, Terms, Cookie Policy, Disclaimer) -->
+<div class="footer-col">
+<h4>Policies</h4>
+<ul class="footer-links">
+<li><a data-policy="privacy" href="404.html"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a></li>
+<li><a data-policy="terms" href="404.html"><i class="fa-solid fa-file-contract"></i> Terms and Conditions</a></li>
+<li><a data-policy="cookies" href="404.html"><i class="fa-solid fa-cookie-bite"></i> Cookie Policy</a></li>
+<li><a data-policy="disclaimer" href="404.html"><i class="fa-solid fa-circle-info"></i> Disclaimer</a></li>
+</ul>
+</div>
+<!-- Column 4 — Contact Information (Official Website Contact Details) -->
+<div class="footer-col">
+<h4>Contact Us</h4>
+<div class="footer-contact-list">
+<div class="contact-item">
+<i class="fa-solid fa-location-dot"></i>
+<span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+</div>
+<div class="contact-item">
+<i class="fa-solid fa-envelope"></i>
+<a href="mailto:info@stackly.com">info@stackly.com</a>
+</div>
+<div class="contact-item">
+<i class="fa-solid fa-phone"></i>
+<a href="tel:9876543210">9876543210</a>
+</div>
+<div>
+<a class="map-btn-link" href="https://www.google.com/maps/place/Stackly/@11.6829566,78.1739798,17z/data=!3m1!4b1!4m6!3m5!1s0x3babefef7fd970bb:0xe11aef1a71994f9!8m2!3d11.6829566!4d78.1739798!16s%2Fg%2F11l660s35r?entry=ttu&amp;g_ep=EgoyMDI2MDcwNy4wIKXMDSoASAFQAw%3D%3D" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-map-location-dot"></i> View on Google Maps
+              </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Bottom Legal -->
+<div class="footer-bottom">
+<p>© 2026 Stackly. All rights reserved.</p>
+<div class="footer-legal-links">
+<a data-policy="privacy" href="404.html">Privacy Policy</a>
+<a data-policy="terms" href="404.html">Terms and Conditions</a>
+<a data-policy="cookies" href="404.html">Cookie Policy</a>
+<a data-policy="disclaimer" href="404.html">Disclaimer</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Slide-out Cart Drawer -->
+<div class="cart-drawer-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<aside aria-label="Shopping Cart" class="cart-drawer" id="cart-drawer">
+<div class="cart-header">
+<h3>Your Bag</h3>
+<button aria-label="Close Shopping Bag" class="cart-close-btn" onclick="closeCart()">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+<div class="cart-shipping-notice">
+<span id="shipping-text">Add $21.00 more for <strong>FREE Worldwide Shipping</strong></span>
+<div class="shipping-bar"><div class="shipping-progress" id="shipping-progress" style="width: 72%;"></div></div>
+</div>
+<div class="cart-items" id="cart-items-container"></div>
+<div class="cart-footer">
+<div class="cart-subtotal"><span>Subtotal</span><span id="cart-subtotal-val">$92.00</span></div>
+<button class="btn-checkout" onclick="handleCheckout()">Proceed to Checkout</button>
+</div>
+</aside>
+<!-- Toast Notification Alert -->
+<div class="toast-notice" id="toast-notice" role="alert">
+<span class="toast-icon"><i class="fa-solid fa-circle-check"></i></span>
+<span class="toast-message" id="toast-message">Item added to your bag</span>
+</div>
+<!-- AOS Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<!-- Main Script -->
+<script src="script.js"></script>
+<!-- Cart Page Dedicated Scripts -->
+<script>
+    // State for promo code
+    let promoDiscountPercent = 0;
+    let promoDiscountFixed = 0;
+    let appliedPromoCodeName = "";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Promo enter key support
+      const promoInput = document.getElementById("promo-code-input");
+      if (promoInput) {
+        promoInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            applyPromoCode();
+          }
+        });
+      }
+
+      // Load saved promo if any
+      const savedPromo = localStorage.getItem("stackly_promo_code");
+      if (savedPromo) {
+        if (promoInput) promoInput.value = savedPromo;
+        applyPromoCodeInternal(savedPromo, false);
+      }
+      renderCartPage();
+    });
+
+    function renderCartPage() {
+      const itemsContainer = document.getElementById("cart-page-items-container");
+      const mainGridWrap = document.getElementById("cart-main-grid-wrap");
+      const emptyView = document.getElementById("cart-page-empty-view");
+      const shippingBanner = document.querySelector(".cart-free-shipping-card");
+      const itemsCountDisplay = document.getElementById("cart-items-count-display");
+
+      if (!itemsContainer) return;
+
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      if (itemsCountDisplay) itemsCountDisplay.textContent = totalItems;
+
+      if (cart.length === 0) {
+        if (mainGridWrap) mainGridWrap.style.display = "none";
+        if (shippingBanner) shippingBanner.style.display = "none";
+        if (emptyView) emptyView.style.display = "block";
+        return;
+      }
+
+      if (mainGridWrap) mainGridWrap.style.display = "grid";
+      if (shippingBanner) shippingBanner.style.display = "block";
+      if (emptyView) emptyView.style.display = "none";
+
+      let subtotal = 0;
+
+      itemsContainer.innerHTML = cart.map(item => {
+        const prod = PRODUCTS[item.id] || {
+          id: item.id,
+          name: item.name || "Botanical Formulation",
+          price: item.price || 48,
+          img: item.img || item.image || "assets/images/shop_prod_amber_serum.webp",
+          desc: item.desc || "Pure cold-pressed botanical skincare formulation."
+        };
+        if (!prod) return "";
+        const itemLineTotal = prod.price * item.qty;
+        subtotal += itemLineTotal;
+
+        return `
+          <div class="cart-page-item">
+            <div class="cart-item-product-cell">
+              <div class="cart-item-thumb">
+                <img src="${prod.img}" alt="${prod.name}">
+              </div>
+              <div class="cart-item-info-text">
+                <h4>${prod.name}</h4>
+                <p>${prod.desc.substring(0, 75)}...</p>
+              </div>
+            </div>
+
+            <div class="cart-item-unit-price">$${prod.price.toFixed(2)}</div>
+
+            <div style="text-align: center;">
+              <div class="cart-qty-pill">
+                <button type="button" onclick="updateCartPageQty(${prod.id}, -1)" aria-label="Decrease quantity">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <span>${item.qty}</span>
+                <button type="button" onclick="updateCartPageQty(${prod.id}, 1)" aria-label="Increase quantity">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="cart-item-line-total" style="text-align: right;">
+              $${itemLineTotal.toFixed(2)}
+            </div>
+
+            <div>
+              <button type="button" class="cart-item-del-btn" onclick="removeCartPageItem(${prod.id})" aria-label="Remove item">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      // Update Order Summary
+      const subtotalElem = document.getElementById("cart-page-subtotal");
+      const discountRow = document.getElementById("cart-page-discount-row");
+      const discountElem = document.getElementById("cart-page-discount");
+      const discountCodeTag = document.getElementById("cart-discount-code-tag");
+      const shippingElem = document.getElementById("cart-page-shipping-fee");
+      const taxElem = document.getElementById("cart-page-tax");
+      const totalElem = document.getElementById("cart-page-total");
+      const modalTotalElem = document.getElementById("modal-charged-total");
+
+      if (subtotalElem) subtotalElem.textContent = `$${subtotal.toFixed(2)}`;
+
+      // Calculate Shipping
+      const freeShippingThreshold = 75;
+      const isFreeShipping = subtotal >= freeShippingThreshold;
+      const shippingCost = isFreeShipping ? 0 : 8.00;
+
+      // Update Shipping Banner
+      const shippingMsg = document.getElementById("cart-page-shipping-msg");
+      const shippingPct = document.getElementById("cart-page-shipping-pct");
+      const shippingBar = document.getElementById("cart-page-shipping-bar");
+
+      if (isFreeShipping) {
+        if (shippingMsg) shippingMsg.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--color-forest-green);"></i> <span>Congratulations! You have unlocked <strong>FREE Cold-Chain Express Shipping!</strong></span>`;
+        if (shippingPct) shippingPct.textContent = "100% Unlocked";
+        if (shippingBar) shippingBar.style.width = "100%";
+        if (shippingElem) {
+          shippingElem.textContent = "FREE";
+          shippingElem.style.color = "var(--color-forest-green)";
+        }
+      } else {
+        const remaining = (freeShippingThreshold - subtotal).toFixed(2);
+        const percent = Math.min(100, Math.round((subtotal / freeShippingThreshold) * 100));
+        if (shippingMsg) shippingMsg.innerHTML = `<i class="fa-solid fa-truck-fast"></i> <span>Add <strong>$${remaining}</strong> more to qualify for <strong>FREE Worldwide Express Shipping!</strong></span>`;
+        if (shippingPct) shippingPct.textContent = `${percent}% of $75`;
+        if (shippingBar) shippingBar.style.width = `${percent}%`;
+        if (shippingElem) {
+          shippingElem.textContent = "$8.00";
+          shippingElem.style.color = "var(--color-text-dark)";
+        }
+      }
+
+      // Calculate Discount
+      let discountAmount = 0;
+      if (promoDiscountPercent > 0) {
+        discountAmount = subtotal * promoDiscountPercent;
+      } else if (promoDiscountFixed > 0) {
+        discountAmount = Math.min(subtotal, promoDiscountFixed);
+      }
+
+      if (discountAmount > 0) {
+        if (discountRow) discountRow.style.display = "flex";
+        if (discountElem) discountElem.textContent = `-$${discountAmount.toFixed(2)}`;
+        if (discountCodeTag) discountCodeTag.textContent = appliedPromoCodeName;
+      } else {
+        if (discountRow) discountRow.style.display = "none";
+      }
+
+      // Calculate Tax (5%)
+      const taxableAmount = Math.max(0, subtotal - discountAmount);
+      const tax = taxableAmount * 0.05;
+      if (taxElem) taxElem.textContent = `$${tax.toFixed(2)}`;
+
+      // Final Total
+      const grandTotal = taxableAmount + shippingCost + tax;
+      if (totalElem) totalElem.textContent = `$${grandTotal.toFixed(2)}`;
+      if (modalTotalElem) modalTotalElem.textContent = `$${grandTotal.toFixed(2)}`;
+    }
+
+    function updateCartPageQty(productId, delta) {
+      updateQty(productId, delta);
+      renderCartPage();
+    }
+
+    function removeCartPageItem(productId) {
+      removeFromCart(productId);
+      renderCartPage();
+    }
+
+    function clearEntireCart() {
+
+        cart = [];
+        persistCart();
+        renderCart();
+        renderCartPage();
+        showToast("Your shopping bag has been cleared");
+      }
+    
+
+    function addAddonToCart(productId) {
+      addToCart(productId);
+      renderCartPage();
+    }
+
+    // Promo Code Application
+    function applyPromoCode() {
+      const input = document.getElementById("promo-code-input");
+      if (!input) return;
+      const code = input.value.trim().toUpperCase();
+      applyPromoCodeInternal(code, true);
+    }
+
+    function applyPromoCodeInternal(code, showFeedback) {
+      const msgBox = document.getElementById("promo-message-box");
+
+      if (code === "RADIANCE") {
+        promoDiscountPercent = 0.15;
+        promoDiscountFixed = 0;
+        appliedPromoCodeName = "RADIANCE (15% OFF)";
+        localStorage.setItem("stackly_promo_code", "RADIANCE");
+        if (msgBox && showFeedback) {
+          msgBox.className = "promo-message-box success";
+          msgBox.innerHTML = `<i class="fa-solid fa-circle-check"></i> Code <strong>RADIANCE</strong> applied! 15% discount saved.`;
+        }
+      } else if (code === "GLOW10") {
+        promoDiscountPercent = 0;
+        promoDiscountFixed = 10;
+        appliedPromoCodeName = "GLOW10 ($10 OFF)";
+        localStorage.setItem("stackly_promo_code", "GLOW10");
+        if (msgBox && showFeedback) {
+          msgBox.className = "promo-message-box success";
+          msgBox.innerHTML = `<i class="fa-solid fa-circle-check"></i> Code <strong>GLOW10</strong> applied! $10.00 discount saved.`;
+        }
+      } else {
+        promoDiscountPercent = 0;
+        promoDiscountFixed = 0;
+        appliedPromoCodeName = "";
+        localStorage.removeItem("stackly_promo_code");
+        if (msgBox && showFeedback) {
+          msgBox.className = "promo-message-box error";
+          msgBox.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> Invalid promo code. Try <strong>RADIANCE</strong> for 15% off.`;
+        }
+      }
+
+      renderCartPage();
+    }
+
+    // Checkout Modal Simulation
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        showToast("Your shopping bag is empty!");
+        return;
+      }
+      document.getElementById("checkout-step-1").style.display = "block";
+      document.getElementById("checkout-step-2").style.display = "none";
+      document.getElementById("checkout-modal").classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById("checkout-modal").classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    function confirmAndPlaceOrder() {
+      document.getElementById("checkout-step-1").style.display = "none";
+      document.getElementById("checkout-step-2").style.display = "block";
+
+      // Clear bag and update storage
+      cart = [];
+      persistCart();
+      renderCart();
+      renderCartPage();
+      showToast("Order placed successfully! Tracking active in Dashboard.");
+    }
+  </script>
+</body>
+</html>

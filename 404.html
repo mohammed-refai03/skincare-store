@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="page-404-html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Formula Not Found | Stackly Luxury Skincare</title>
+  <meta name="description" content="Even the purest botanical extracts sometimes evaporate into the ether. The ritual page you were seeking cannot be found or has been reformulated.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-404">
+
+  <!-- Minimal Brand Header (Fixed Top-Left, 0 Vertical Flow) -->
+  <header class="error-404-header">
+   
+  </header>
+
+  <!-- Main 404 Experience (Fits to Screen Without Scrolling) -->
+  <main>
+    <section class="error-404-section">
+      <div class="error-404-container" data-aos="fade-up">
+ <a href="index.html" class="logo" style="padding-bottom: 20px;" aria-label="Return to Stackly Home">
+      <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img">
+    </a>
+        <!-- Continuous Skincare Animation Showcase -->
+        <div class="skincare-404-anim-wrapper">
+          <!-- Continuous Pulsing Lipid Barrier Aura -->
+          <div class="lipid-aura-halo"></div>
+
+          <!-- Floating Botanical Petals & Dew Micro-Bubbles -->
+          <div class="anim-petal petal-1"><i class="fa-solid fa-leaf"></i></div>
+          <div class="anim-petal petal-2"><i class="fa-solid fa-spa"></i></div>
+          <div class="anim-petal petal-3"><i class="fa-solid fa-seedling"></i></div>
+          <div class="anim-bubble bubble-1"></div>
+          <div class="anim-bubble bubble-2"></div>
+
+          <!-- 404 Digits Row with Centerpiece Pipette Dropper -->
+          <div class="error-digits-row">
+            <span class="error-digit">4</span>
+
+            <!-- Centerpiece Dropper Pipette & Ripple Fountain -->
+            <div class="dropper-centerpiece" aria-hidden="true">
+              <div class="pipette-bulb"></div>
+              <div class="pipette-collar"></div>
+              <div class="pipette-glass-barrel">
+                <div class="pipette-serum-fill"></div>
+              </div>
+              <div class="pipette-nozzle">
+                <div class="pipette-nozzle-serum"></div>
+              </div>
+
+              <!-- Continuous Animated Droplet Falling -->
+              <div class="serum-droplet"></div>
+
+              <!-- Continuous Expanding Concentric Ripples -->
+              <div class="serum-pool-container">
+                <div class="serum-ripple ripple-1"></div>
+                <div class="serum-ripple ripple-2"></div>
+                <div class="serum-ripple ripple-3"></div>
+              </div>
+            </div>
+
+            <span class="error-digit">4</span>
+          </div>
+        </div>
+
+        <!-- 404 Headline & Storytelling -->
+        <div class="error-badge">
+          <i class="fa-solid fa-droplet"></i> Error 404 &bull; Formula Evaporated
+        </div>
+
+        <h1 class="error-title">This Ritual Has Dissolved Into Thin Air</h1>
+
+        <p class="error-desc">
+          Even our purest cold-pressed botanical extractions occasionally evaporate into the ether. The formula or link you were seeking cannot be located, or may have been delicately reformulated into a new seasonal collection.
+        </p>
+
+        <!-- Two Interactive Buttons as Requested -->
+        <div class="error-actions-group">
+          <!-- Button 1: Go Back in History -->
+          <button type="button" class="btn-404-action btn-primary" onclick="goBackHistory()" aria-label="Go Back" style="background-color: #1e4338; color: #ffffff; border: 1.5px solid #1e4338;">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Go Back</span>
+          </button>
+
+          <!-- Button 2: Return to Home -->
+          <a href="index.html" class="btn-404-action btn-secondary" id="btn-return-home" aria-label="Return to Home">
+            <i class="fa-solid fa-house"></i>
+            <span>Return to Home</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- AOS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Main Script -->
+  <script src="script.js"></script>
+
+  <!-- Smart 404 Navigation Handler -->
+  <script>
+    // Navigation Action: Go Back in History
+    function goBackHistory() {
+      sessionStorage.setItem('stackly_is_back_from_404', 'true');
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        const prev = sessionStorage.getItem('stackly_404_prev_url') || (document.referrer && !document.referrer.includes('404') ? document.referrer : 'index.html');
+        window.location.replace(prev);
+      }
+    }
+  </script>
+</body>
+</html>

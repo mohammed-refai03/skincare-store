@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard — Stackly Skincare Portal</title>
+  <meta name="description" content="Manage your botanical skincare orders, delivery progress, customer messages, and profile.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: var(--color-bg-dashboard);">
+
+  <div class="dashboard-layout">
+    <!-- User Sidebar: ONLY 5 PRIMARY MENU OPTIONS (Guideline Requirement) -->
+    <aside class="dashboard-sidebar" id="user-sidebar">
+      <!-- Dashboard Brand Header (Turn 17: Brand Logo & Page Denotion) -->
+      <div class="dashboard-brand-header">
+        <div class="sidebar-brand-top">
+          <a href="" class="logo" aria-label="Stackly Homepage">
+            <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img dashboard-logo-img">
+          </a>
+          <button type="button" class="sidebar-close-btn" id="user-sidebar-close" aria-label="Close Sidebar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="dashboard-page-badge user-badge">
+          <i class="fa-solid fa-user-check"></i>
+          <span>User Dashboard</span>
+        </div>
+      </div>
+
+      <!-- 5 Primary Sidebar Options -->
+      <nav class="dashboard-nav-list" aria-label="Customer Navigation Menu">
+        <a href="#overview" class="dashboard-nav-item active" data-tab="tab-user-overview" id="nav-user-overview">
+          <i class="fa-solid fa-seedling"></i>
+          <span>My Impact</span>
+        </a>
+        <a href="#orders" class="dashboard-nav-item" data-tab="tab-user-orders" id="nav-user-orders">
+          <i class="fa-solid fa-box-archive"></i>
+          <span>My Orders</span>
+        </a>
+        <a href="#skin-health" class="dashboard-nav-item" data-tab="tab-user-skin-health" id="nav-user-skin-health">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <span>Skin Health</span>
+        </a>
+        <a href="#products" class="dashboard-nav-item" data-tab="tab-user-products" id="nav-user-products">
+          <i class="fa-solid fa-store"></i>
+          <span>Products</span>
+        </a>
+        <a href="#profile" class="dashboard-nav-item" data-tab="tab-user-profile" id="nav-user-profile">
+          <i class="fa-solid fa-user-circle"></i>
+          <span>Profile</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer matching Image 1: User Profile Card + Red Logout -->
+      <div class="dashboard-sidebar-footer">
+        <div class="sidebar-user-card">
+          <div class="avatar-teal-ring" id="user-sidebar-avatar">U</div>
+          <div class="sidebar-user-details">
+            <div class="sidebar-user-name" id="user-sidebar-name">User Dashboard</div>
+            <div class="sidebar-user-email" id="user-sidebar-email">guardian_user@stackly.org</div>
+          </div>
+        </div>
+        <a href="login.html" class="sidebar-logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="sidebar-backdrop" id="user-sidebar-backdrop"></div>
+
+    <!-- Main Content Area with Dynamic Content Toggling -->
+    <main class="dashboard-main">
+      <!-- Topbar Header matching Image 1 & Image 2 -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar-left">
+          <button type="button" class="mobile-menu-btn" id="user-sidebar-toggle" aria-label="Toggle Navigation Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div style="display: inline-flex; align-items: center; flex-wrap: wrap;">
+            <h2 class="topbar-heading-title" id="user-topbar-title">My Impact</h2>
+          </div>
+        </div>
+
+        <div class="dashboard-topbar-right">
+         
+          <div class="topbar-user-info">
+            <div class="topbar-user-name" id="user-topbar-name">User Dashboard</div>
+            <div class="topbar-user-email" id="user-topbar-email">guardian_user@stackly.org</div>
+          </div>
+          <div class="avatar-teal-ring" id="user-topbar-avatar">U</div>
+        </div>
+      </header>
+
+      <!-- Dashboard Scrollable Content Area -->
+      <div class="dashboard-content">
+        <!-- ==========================================================================
+             TAB 1: USER OVERVIEW (EXACT IMAGE 1 & IMAGE 2 ARCHITECTURE)
+             ========================================================================== -->
+        <section class="tab-pane active" id="tab-user-overview">
+        <!-- Overview Dashboard Section Header (Image 1) -->
+        <div class="content-section-header">
+          <h1 class="content-section-title">Overview Dashboard</h1>
+          <p class="content-section-subtitle">Real-time tracking profile of your ecological footprint contribution metrics.</p>
+        </div>
+
+        <!-- 4 Metric Cards in a row (Image 1) -->
+        <div class="impact-stats-grid">
+        
+
+          <!-- Card 2 -->
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">VOLUNTEER HOURS</div>
+              <div class="impact-stat-value">42 hrs</div>
+            </div>
+            <div class="impact-stat-icon blue">
+              <i class="fa-solid fa-hourglass-half"></i>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">PLASTIC MITIGATED</div>
+              <div class="impact-stat-value">118 kg</div>
+            </div>
+            <div class="impact-stat-icon peach">
+              <i class="fa-solid fa-recycle"></i>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">ECO POINTS BAL</div>
+              <div class="impact-stat-value">2,450</div>
+            </div>
+            <div class="impact-stat-icon yellow">
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Data Charts (Image 1) -->
+        <div class="impact-charts-row">
+          <!-- Left: Monthly Field Output Distribution Bar Chart -->
+          <div class="impact-chart-card">
+            <h3 class="impact-chart-title">Monthly Field Output Distribution</h3>
+            <div class="chart-canvas-wrapper" style="height: 280px;">
+              <canvas id="monthlyFieldOutputChartUser"></canvas>
+            </div>
+          </div>
+
+          <!-- Right: Operational Focus Allocation Pie Chart -->
+          <div class="impact-chart-card">
+            <h3 class="impact-chart-title">Operational Focus Allocation</h3>
+            <div class="chart-canvas-wrapper" style="height: 220px;">
+              <canvas id="operationalFocusChartUser"></canvas>
+            </div>
+            <div class="impact-legend">
+              <div class="legend-item">
+                <span class="legend-color-box" style="background-color: var(--color-forest-green);"></span>
+                <span>Beach Cleans</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color-box" style="background-color: var(--color-accent-gold);"></span>
+                <span>Awareness Ops</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color-box" style="background-color: var(--color-text-dark);"></span>
+                <span>Fund Pools</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Section: Carbon Offsetting & Sequestration Metrics (Image 1) -->
+        <div class="impact-subheading">
+          <i class="fa-solid fa-seedling" style="color: var(--color-forest-green);"></i>
+          <span>Carbon Offsetting & Sequestration Metrics</span>
+        </div>
+
+        <div class="impact-highlight-grid">
+          <div class="impact-highlight-card green-accent">
+            <div class="impact-highlight-label">ESTIMATED CO2 ABSORPTION</div>
+            <div class="impact-highlight-value green">1.4 Tons</div>
+          </div>
+
+          <div class="impact-highlight-card teal-accent">
+            <div class="impact-highlight-label">MANGROVE STOCKS SECURED</div>
+            <div class="impact-highlight-value teal">28 Units</div>
+          </div>
+
+          <div class="impact-highlight-card orange-accent">
+            <div class="impact-highlight-label">PROJECTED 10-YR YIELD</div>
+            <div class="impact-highlight-value orange">14.2 Tons</div>
+          </div>
+        </div>
+
+        <!-- Active Delivery Visual Progress Tracker -->
+        <div class="dashboard-table-card" style="margin-bottom: 28px; background: linear-gradient(180deg, #ffffff 0%, #fdfdfd 100%);">
+          <div class="table-header-row">
+            <div>
+              <span class="section-tag" style="margin-bottom: 4px;">Live Shipment Tracking</span>
+              <h3 style="font-size: 20px;">Order #STK-94021 &mdash; The Lily Ritual Set</h3>
+              <p style="font-size: 12px; color: #64748b;">Carrier: FedEx Express &bull; Tracking No: <strong>FEDEX-948102819</strong></p>
+            </div>
+            <span class="status-badge shipped" style="font-size: 12px; padding: 6px 14px;">
+              <i class="fa-solid fa-truck-fast"></i> Out for Delivery Today
+            </span>
+          </div>
+
+          <!-- Step Progress Visual Indicator -->
+          <div class="order-step-progress-grid">
+            <div style="text-align: center;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-forest-green); color: #fff; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <strong style="font-size: 12px; display: block; color: var(--color-text-dark);">Order Placed</strong>
+              <span style="font-size: 11px; color: #64748b;">Oct 24, 09:30 AM</span>
+            </div>
+
+            <div style="text-align: center;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-forest-green); color: #fff; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <strong style="font-size: 12px; display: block; color: var(--color-text-dark);">Botanical Compounded</strong>
+              <span style="font-size: 11px; color: #64748b;">Oct 24, 02:15 PM</span>
+            </div>
+
+            <div style="text-align: center;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-forest-green); color: #fff; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <strong style="font-size: 12px; display: block; color: var(--color-text-dark);">Carrier Dispatched</strong>
+              <span style="font-size: 11px; color: #64748b;">Oct 25, 08:45 AM</span>
+            </div>
+
+            <div style="text-align: center;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-accent-gold); color: #fff; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; animation: pulse 2s infinite;">
+                <i class="fa-solid fa-truck"></i>
+              </div>
+              <strong style="font-size: 12px; display: block; color: var(--color-text-dark);">Out for Delivery</strong>
+              <span style="font-size: 11px; color: #64748b;">Est. by 04:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Personal Charts (Line & Pie) -->
+        <div class="charts-grid-equal">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Order Frequency History</h3>
+              <span style="font-size: 11px; color: #64748b;">Past 6 months</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="userOrderHistoryChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>My Skincare Product Categories</h3>
+              <span style="font-size: 11px; color: #64748b;">Purchases breakdown</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="userCategoryPieChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommended Skincare Products -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>Tailored Recommendations for Eleanor</h3>
+              <p style="font-size: 13px; color: #64748b;">Based on your barrier repair diagnosis & sensitivity profile.</p>
+            </div>
+            <button type="button" class="btn-pill-sm" onclick="window.location.href='404.html'">Browse Catalog </button>
+          </div>
+
+          <div class="recommendations-grid">
+            <div class="product-card" style="background: #f8fafc; padding: 16px; border-radius: var(--radius-lg); border: 1px solid #e2e8f0;">
+              <div class="product-image-box" style="height: 180px; margin-bottom: 12px;">
+                <img src="assets/images/product_oil.webp" alt="Botanical Glow Facial Oil">
+              </div>
+              <h4 style="font-size: 14px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 2px;">Botanical Glow Facial Oil</h4>
+              <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Calms redness, locks moisture</p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-serif); font-size: 16px; font-weight: 600;">$48.00</span>
+                <button class="btn-pill-sm" style="padding: 6px 14px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+              </div>
+            </div>
+
+            <div class="product-card" style="background: #f8fafc; padding: 16px; border-radius: var(--radius-lg); border: 1px solid #e2e8f0;">
+              <div class="product-image-box" style="height: 180px; margin-bottom: 12px;">
+                <img src="assets/images/product_cleanser.webp" alt="Purifying Gel Cleanser">
+              </div>
+              <h4 style="font-size: 14px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 2px;">Purifying Gel Cleanser</h4>
+              <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Gentle microbiome safe wash</p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-serif); font-size: 16px; font-weight: 600;">$38.00</span>
+                <button class="btn-pill-sm" style="padding: 6px 14px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+              </div>
+            </div>
+
+            <div class="product-card" style="background: #f8fafc; padding: 16px; border-radius: var(--radius-lg); border: 1px solid #e2e8f0;">
+              <div class="product-image-box" style="height: 180px; margin-bottom: 12px;">
+                <img src="assets/images/product_roller_set.webp" alt="Rejuvenating Jade Ritual Set">
+              </div>
+              <h4 style="font-size: 14px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 2px;">Rejuvenating Jade Set</h4>
+              <p style="font-size: 11px; color: #64748b; margin-bottom: 12px;">Lymphatic sculpting duo</p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-serif); font-size: 16px; font-weight: 600;">$62.00</span>
+                <button class="btn-pill-sm" style="padding: 6px 14px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 2: MY ORDERS (REAL-TIME TELEMETRY, CHARTS & ORDERS LEDGER)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-user-orders">
+        <div class="content-section-header">
+          <h2 class="content-section-title">My Orders & Fulfillment Telemetry</h2>
+          <p class="content-section-subtitle">Real-time cold-chain logistics, live dispatch tracking, and historical replenishment ledger.</p>
+        </div>
+
+        <!-- 4 Stat Cards Row -->
+        <div class="impact-stats-grid">
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Active Shipments</div>
+              <div class="impact-stat-value">1 In-Transit</div>
+              <div style="font-size: 11.5px; color: var(--color-forest-green); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-plane-arrival"></i> FedEx Priority #948102
+              </div>
+            </div>
+            <div class="impact-stat-icon teal">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Completed Deliveries</div>
+              <div class="impact-stat-value">7 Delivered</div>
+              <div style="font-size: 11.5px; color: var(--color-accent-gold); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-circle-check"></i> 100% On-Time Record
+              </div>
+            </div>
+            <div class="impact-stat-icon blue">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Lifetime Purchases</div>
+              <div class="impact-stat-value">$524.00</div>
+              <div style="font-size: 11.5px; color: #b8424a; font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-receipt"></i> 7 Verified Receipts
+              </div>
+            </div>
+            <div class="impact-stat-icon peach">
+              <i class="fa-solid fa-wallet"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Auto-Replenish Cycle</div>
+              <div class="impact-stat-value">24.5 Days</div>
+              <div style="font-size: 11.5px; color: var(--color-text-dark); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-calendar-check"></i> Next Batch: Nov 12
+              </div>
+            </div>
+            <div class="impact-stat-icon yellow">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Order Charts Row -->
+        <div class="impact-charts-row">
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-chart-line" style="color: var(--color-forest-green); margin-right: 8px;"></i>
+              Order Spending History & Trend ($ USD)
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 250px; position: relative;">
+              <canvas id="userOrderSpendingChart"></canvas>
+            </div>
+          </div>
+
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-chart-pie" style="color: var(--color-accent-gold); margin-right: 8px;"></i>
+              Fulfillment Status Breakdown
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 200px; position: relative;">
+              <canvas id="userOrderStatusDoughnut"></canvas>
+            </div>
+            <div class="impact-legend">
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #1e4338;"></span> Delivered (85.7%)</div>
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #c5a059;"></span> Out for Delivery (14.3%)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Courier Telemetry Card -->
+        <div class="impact-chart-card" style="margin-bottom: 28px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px;">
+            <div>
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-forest-green); font-weight: 700;">Live Cold-Chain Telemetry</div>
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--color-text-dark); margin: 2px 0 0;">Active Shipment #STK-94021 &bull; FedEx Express</h3>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="status-badge shipped" style="font-size: 12px; padding: 6px 14px;"><i class="fa-solid fa-van-shuttle"></i> Out for Delivery Today</span>
+              <span style="font-size: 12px; color: var(--color-text-muted); font-weight: 600;">ETA: 4:30 PM IST</span>
+            </div>
+          </div>
+
+          <!-- Tracking Milestones -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; padding: 18px; background: var(--color-bg-stone); border-radius: 10px; border: 1px solid var(--color-border-light);">
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-forest-green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div style="font-size: 12.5px; font-weight: 700; color: var(--color-text-dark);">Oct 24, 09:30 AM</div>
+                <div style="font-size: 11.5px; color: var(--color-text-muted);">Botanical Order Verified</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-forest-green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div style="font-size: 12.5px; font-weight: 700; color: var(--color-text-dark);">Oct 25, 02:15 PM</div>
+                <div style="font-size: 11.5px; color: var(--color-text-muted);">Sterile Cold-Pressed Bottling</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-forest-green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div style="font-size: 12.5px; font-weight: 700; color: var(--color-text-dark);">Oct 25, 07:40 PM</div>
+                <div style="font-size: 11.5px; color: var(--color-text-muted);">Dispatched from Salem Hub</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-accent-gold); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.25);"><i class="fa-solid fa-truck"></i></div>
+              <div>
+                <div style="font-size: 12.5px; font-weight: 700; color: var(--color-text-dark);">Oct 26, 08:15 AM</div>
+                <div style="font-size: 11.5px; color: var(--color-text-muted);">Courier Van En Route</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-time Orders Master Ledger Table -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>Orders Master Ledger & Archive</h3>
+              <p style="font-size: 13px; color: var(--color-text-muted);">Official record of all dispatched formulations, batches, and delivery receipts.</p>
+            </div>
+            <div class="table-toolbar">
+              <div class="search-input-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search orders or waybill...">
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Order Date</th>
+                  <th>Formulations & Contents</th>
+                  <th>Total Amount</th>
+                  <th>Courier & Waybill</th>
+                  <th>Payment Status</th>
+                  <th>Fulfillment Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">#STK-94021</td>
+                  <td>Oct 24, 2026</td>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/lily_ritual_set.webp" alt="The Lily Ritual Set"></div>
+                      <div>
+                        <strong>The Lily Ritual Set</strong>
+                        <div style="font-size: 11px; color: #64748b;">Qty: 1 &bull; 100ml / 50ml Barrier Cream</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-weight: 700;">$89.00</td>
+                  <td><span style="font-family: monospace; font-size: 12px;">FEDEX-948102819</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td><span class="status-badge shipped"><i class="fa-solid fa-truck-fast"></i> Out for Delivery</span></td>
+                  <td>
+                    <button type="button" class="action-btn" title="Track Live" onclick="window.location.href='404.html'"><i class="fa-solid fa-map-location-dot"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">#STK-89240</td>
+                  <td>Sep 15, 2026</td>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_oil.webp" alt="Botanical Glow Facial Oil"></div>
+                      <div>
+                        <strong>Botanical Glow Facial Oil</strong>
+                        <div style="font-size: 11px; color: #64748b;">Qty: 2 &bull; 30ml Cold-Pressed Bottles</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-weight: 700;">$96.00</td>
+                  <td><span style="font-family: monospace; font-size: 12px;">DHL-492018441</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td>
+                    <button type="button" class="btn-pill-sm" style="padding: 6px 12px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-rotate-right"></i> Reorder</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">#STK-77192</td>
+                  <td>Aug 04, 2026</td>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_roller_set.webp" alt="Rejuvenating Jade Ritual Set"></div>
+                      <div>
+                        <strong>Rejuvenating Jade Ritual Set</strong>
+                        <div style="font-size: 11px; color: #64748b;">Qty: 1 &bull; Natural Xiuyan Jade</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-weight: 700;">$62.00</td>
+                  <td><span style="font-family: monospace; font-size: 12px;">BLUEDART-882190</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td>
+                    <button type="button" class="btn-pill-sm" style="padding: 6px 12px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-rotate-right"></i> Reorder</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">#STK-65110</td>
+                  <td>Jun 22, 2026</td>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_cleanser.webp" alt="Purifying Gel Cleanser"></div>
+                      <div>
+                        <strong>Purifying Gel Cleanser</strong>
+                        <div style="font-size: 11px; color: #64748b;">Qty: 1 &bull; 150ml Botanical Wash</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-weight: 700;">$38.00</td>
+                  <td><span style="font-family: monospace; font-size: 12px;">FEDEX-381900142</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td>
+                    <button type="button" class="btn-pill-sm" style="padding: 6px 12px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-rotate-right"></i> Reorder</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">#STK-54019</td>
+                  <td>May 10, 2026</td>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_duo.webp" alt="Hydrating Night Elixir"></div>
+                      <div>
+                        <strong>Hydrating Night Elixir</strong>
+                        <div style="font-size: 11px; color: #64748b;">Qty: 1 &bull; 50ml Ceramide Elixir</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-weight: 700;">$54.00</td>
+                  <td><span style="font-family: monospace; font-size: 12px;">BLUEDART-190344</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td>
+                    <button type="button" class="btn-pill-sm" style="padding: 6px 12px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-rotate-right"></i> Reorder</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 3: SKIN HEALTH (DERMAL BIOMETRICS, BARRIER CLINICAL LEDGER & CHARTS)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-user-skin-health">
+        <div class="content-section-header">
+          <h2 class="content-section-title">Dermal Health & Clinical Biometrics</h2>
+          <p class="content-section-subtitle">Real-time stratum corneum lipid telemetry, transepidermal hydration progression, and ritual step adherence.</p>
+        </div>
+
+        <!-- 4 Stat Cards Row -->
+        <div class="impact-stats-grid">
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Corneum Hydration Index</div>
+              <div class="impact-stat-value">94%</div>
+              <div style="font-size: 11.5px; color: var(--color-forest-green); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-arrow-trend-up"></i> +18% vs Baseline (Day 0)
+              </div>
+            </div>
+            <div class="impact-stat-icon teal">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Lipid Barrier Integrity</div>
+              <div class="impact-stat-value">96 / 100</div>
+              <div style="font-size: 11.5px; color: var(--color-accent-gold); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-shield-halved"></i> Optimal Fortification
+              </div>
+            </div>
+            <div class="impact-stat-icon blue">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Daily Ritual Streak</div>
+              <div class="impact-stat-value">34 Days</div>
+              <div style="font-size: 11.5px; color: #b8424a; font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-fire"></i> AM &bull; PM Complete Streak
+              </div>
+            </div>
+            <div class="impact-stat-icon peach">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Redness / Erythema Index</div>
+              <div class="impact-stat-value">-82%</div>
+              <div style="font-size: 11.5px; color: var(--color-text-dark); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-circle-check"></i> Micro-vascular Calm
+              </div>
+            </div>
+            <div class="impact-stat-icon yellow">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Skin Health Charts Row -->
+        <div class="impact-charts-row">
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-chart-line" style="color: var(--color-forest-green); margin-right: 8px;"></i>
+              8-Week Epidermal Hydration & Barrier Recovery Curve (%)
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 250px; position: relative;">
+              <canvas id="userHydrationProgressionChart"></canvas>
+            </div>
+          </div>
+
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-chart-simple" style="color: var(--color-accent-gold); margin-right: 8px;"></i>
+              Weekly Ritual Adherence (AM / PM Steps)
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 250px; position: relative;">
+              <canvas id="userRitualAdherenceBar"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinical Dermal Biomarker Ledger Table -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>Clinical Dermal Biomarker Ledger</h3>
+              <p style="font-size: 13px; color: var(--color-text-muted);">Laboratory-grade epidermal parameters measured across ongoing skincare cycles.</p>
+            </div>
+            <div class="table-toolbar">
+              <span class="status-badge delivered" style="font-size: 12px; padding: 6px 14px;"><i class="fa-solid fa-circle-check"></i> Overall Skin Health: Grade A (Luminary)</span>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Biomarker Parameter</th>
+                  <th>Baseline (Day 0)</th>
+                  <th>Current Telemetry</th>
+                  <th>Clinical Target</th>
+                  <th>Status Grade</th>
+                  <th>Associated Formula Regimen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Stratum Corneum Hydration Index</strong>
+                    <div style="font-size: 11px; color: #64748b;">Capacitance-based epidermal moisture</div>
+                  </td>
+                  <td>64% (Dehydrated)</td>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">94% (+30%)</td>
+                  <td>85% – 98%</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Optimal Hydration</span></td>
+                  <td>The Lily Ritual Set (Cream + Serum)</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Transepidermal Water Loss (TEWL)</strong>
+                    <div style="font-size: 11px; color: #64748b;">Vapor loss rate across surface barrier</div>
+                  </td>
+                  <td>18.4 g/m²/h (Leaky)</td>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">7.2 g/m²/h (-61%)</td>
+                  <td>&lt; 9.0 g/m²/h</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-shield"></i> Fortified Barrier</span></td>
+                  <td>Botanical Glow Facial Oil</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Sebum Equilibrium Index</strong>
+                    <div style="font-size: 11px; color: #64748b;">T-zone lipid secretion balance</div>
+                  </td>
+                  <td>32% (Deficient)</td>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">48% Balanced</td>
+                  <td>45% – 55%</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Balanced</span></td>
+                  <td>Purifying Gel Cleanser</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Cellular Elasticity & Resilience (R2)</strong>
+                    <div style="font-size: 11px; color: #64748b;">Cutometer gross elastic recovery</div>
+                  </td>
+                  <td>0.71 R2-Ratio</td>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">0.89 R2-Ratio (+25%)</td>
+                  <td>&gt; 0.85 R2</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-arrow-trend-up"></i> High Elasticity</span></td>
+                  <td>Hydrating Night Elixir</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Erythema Micro-Vascular Redness</strong>
+                    <div style="font-size: 11px; color: #64748b;">Mexameter surface redness concentration</div>
+                  </td>
+                  <td>44 Index (Elevated)</td>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">8 Index (-82%)</td>
+                  <td>&lt; 12 Index</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Calmed & Soothed</span></td>
+                  <td>Rejuvenating Jade Facial Ritual Set</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 4: PRODUCTS (SHELF INVENTORY, DEPLETION TELEMETRY & DISPENSARY)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-user-products">
+        <div class="content-section-header">
+          <h2 class="content-section-title">My Shelf Inventory & Member Dispensary</h2>
+          <p class="content-section-subtitle">Real-time vanity shelf tracking, formula depletion telemetry, and exclusive member catalog reorders.</p>
+        </div>
+
+        <!-- 4 Stat Cards Row -->
+        <div class="impact-stats-grid">
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Active Shelf Bottles</div>
+              <div class="impact-stat-value">4 Formulas</div>
+              <div style="font-size: 11.5px; color: var(--color-forest-green); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-bottle-droplet"></i> Daily Rotation In-Use
+              </div>
+            </div>
+            <div class="impact-stat-icon teal">
+              <i class="fa-solid fa-pump-soap"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Average Shelf Fluid</div>
+              <div class="impact-stat-value">58% Level</div>
+              <div style="font-size: 11.5px; color: #b8424a; font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-triangle-exclamation"></i> 1 Bottle Nearing Reorder
+              </div>
+            </div>
+            <div class="impact-stat-icon peach">
+              <i class="fa-solid fa-gauge-high"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Member Privilege Tier</div>
+              <div class="impact-stat-value">15% – 25% Off</div>
+              <div style="font-size: 11.5px; color: var(--color-accent-gold); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-tag"></i> Automatic Applied Discount
+              </div>
+            </div>
+            <div class="impact-stat-icon blue">
+              <i class="fa-solid fa-award"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Botanical Reorder Credit</div>
+              <div class="impact-stat-value">$24.50</div>
+              <div style="font-size: 11.5px; color: var(--color-text-dark); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-coins"></i> 2,450 Reward Pts Ready
+              </div>
+            </div>
+            <div class="impact-stat-icon yellow">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Shelf Charts Row -->
+        <div class="impact-charts-row">
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-bars-progress" style="color: var(--color-forest-green); margin-right: 8px;"></i>
+              Vanity Shelf Depletion & Remaining Volume (%)
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 250px; position: relative;">
+              <canvas id="userShelfDepletionChart"></canvas>
+            </div>
+          </div>
+
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-seedling" style="color: var(--color-accent-gold); margin-right: 8px;"></i>
+              Active Botanical Bio-Class Distribution
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 200px; position: relative;">
+              <canvas id="userIngredientBioChart"></canvas>
+            </div>
+            <div class="impact-legend">
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #1e4338;"></span> White Lily (38%)</div>
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #c5a059;"></span> Rosehip Oil (30%)</div>
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #181614;"></span> Green Tea (18%)</div>
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #b8424a;"></span> Bio-Hyaluronic (14%)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-time Shelf Depletion & Reorder Forecast Table -->
+        <div class="dashboard-table-card" style="margin-bottom: 28px;">
+          <div class="table-header-row">
+            <div>
+              <h3>Vanity Shelf Depletion & Replenishment Schedule</h3>
+              <p style="font-size: 13px; color: var(--color-text-muted);">Real-time volume telemetry and smart auto-replenish estimates based on daily dosage.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Shelf Formulation</th>
+                  <th>Bottle Capacity</th>
+                  <th>Date Opened</th>
+                  <th>Estimated Days Left</th>
+                  <th>Fluid Depletion Level</th>
+                  <th>Supply Status</th>
+                  <th>Quick Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>The Lily Ritual Set</strong>
+                    <div style="font-size: 11px; color: #64748b;">50ml Moisture Cream &bull; Twice daily</div>
+                  </td>
+                  <td>50ml Glass Jar</td>
+                  <td>Sep 12, 2026</td>
+                  <td style="font-weight: 700; color: #b8424a;">6 Days Remaining</td>
+                  <td style="min-width: 140px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="shipping-bar" style="flex: 1; height: 6px; background: #e2e8f0; margin-top: 0;">
+                        <div style="width: 22%; height: 100%; background: #b8424a; border-radius: 9999px;"></div>
+                      </div>
+                      <span style="font-size: 11px; font-weight: 700; color: #b8424a;">22%</span>
+                    </div>
+                  </td>
+                  <td><span class="status-badge" style="background-color: #ffe8e9; color: #b8424a;"><i class="fa-solid fa-triangle-exclamation"></i> Low Stock Alert</span></td>
+                  <td>
+                    <button type="button" class="btn-pill-sm" style="padding: 6px 12px; font-size: 11px; background-color: var(--color-forest-green); color: #fff;" onclick="window.location.href='404.html'"><i class="fa-solid fa-rotate-right"></i> Auto-Replenish</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Botanical Glow Facial Oil</strong>
+                    <div style="font-size: 11px; color: #64748b;">30ml Amber Dropper &bull; 3 drops evening</div>
+                  </td>
+                  <td>30ml Glass Bottle</td>
+                  <td>Oct 01, 2026</td>
+                  <td style="font-weight: 700; color: var(--color-accent-gold);">21 Days Remaining</td>
+                  <td style="min-width: 140px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="shipping-bar" style="flex: 1; height: 6px; background: #e2e8f0; margin-top: 0;">
+                        <div style="width: 48%; height: 100%; background: var(--color-accent-gold); border-radius: 9999px;"></div>
+                      </div>
+                      <span style="font-size: 11px; font-weight: 700; color: var(--color-accent-gold);">48%</span>
+                    </div>
+                  </td>
+                  <td><span class="status-badge" style="background-color: #fcf6ea; color: var(--color-accent-gold);"><i class="fa-solid fa-clock"></i> Half Volume</span></td>
+                  <td>
+                    <button type="button" class="btn-pill-sm" style="padding: 6px 12px; font-size: 11px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Reorder</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Purifying Gel Cleanser</strong>
+                    <div style="font-size: 11px; color: #64748b;">150ml Botanical Wash &bull; AM & PM</div>
+                  </td>
+                  <td>150ml Pump Bottle</td>
+                  <td>Oct 10, 2026</td>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">38 Days Remaining</td>
+                  <td style="min-width: 140px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="shipping-bar" style="flex: 1; height: 6px; background: #e2e8f0; margin-top: 0;">
+                        <div style="width: 68%; height: 100%; background: var(--color-forest-green); border-radius: 9999px;"></div>
+                      </div>
+                      <span style="font-size: 11px; font-weight: 700; color: var(--color-forest-green);">68%</span>
+                    </div>
+                  </td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Ample Volume</span></td>
+                  <td>
+                    <button type="button" class="action-btn" title="View Details" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Hydrating Night Elixir</strong>
+                    <div style="font-size: 11px; color: #64748b;">50ml Ceramide Elixir &bull; PM use</div>
+                  </td>
+                  <td>50ml Violet Glass</td>
+                  <td>Oct 18, 2026</td>
+                  <td style="font-weight: 700; color: var(--color-forest-green);">52 Days Remaining</td>
+                  <td style="min-width: 140px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="shipping-bar" style="flex: 1; height: 6px; background: #e2e8f0; margin-top: 0;">
+                        <div style="width: 84%; height: 100%; background: var(--color-forest-green); border-radius: 9999px;"></div>
+                      </div>
+                      <span style="font-size: 11px; font-weight: 700; color: var(--color-forest-green);">84%</span>
+                    </div>
+                  </td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Optimal Volume</span></td>
+                  <td>
+                    <button type="button" class="action-btn" title="View Details" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Member Exclusive Dispensary Grid -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>Member Exclusive Dispensary Catalog</h3>
+              <p style="font-size: 13px; color: var(--color-text-muted);">Freshly batched cold-pressed formulations ready for instant member dispatch.</p>
+            </div>
+            <div class="table-toolbar">
+              <select class="select-filter" id="userCatalogFilter" onchange="filterUserCatalog()">
+                <option value="all">All Formulations</option>
+                <option value="cleanser">Facial Cleansers</option>
+                <option value="serum">Serums & Oils</option>
+                <option value="set">Ritual Sets</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="products-grid" id="userCatalogGrid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="cleanser" style="border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); padding: 18px; background: #fff;">
+              <div class="product-image-box">
+                <span class="product-tag">15% Member Off</span>
+                <img src="assets/images/product_cleanser.webp" alt="Purifying Gel Cleanser">
+              </div>
+              <div class="product-info">
+                <div>
+                  <h4 class="product-title">Purifying Gel Cleanser</h4>
+                  <p class="product-category">Gentle botanical wash (150ml)</p>
+                  <div style="color: var(--color-accent-gold); font-size: 12px; margin: 4px 0;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
+                </div>
+                <div style="text-align: right;">
+                  <span class="product-price">$38.00</span>
+                  <div style="font-size: 11px; text-decoration: line-through; color: #94a3b8;">$45.00</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: 14px;">
+                <button type="button" class="btn-primary" style="flex: 1; padding: 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-category="serum" style="border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); padding: 18px; background: #fff;">
+              <div class="product-image-box">
+                <span class="product-tag">Restorative Duo</span>
+                <img src="assets/images/product_duo.webp" alt="Hydrating Night Elixir">
+              </div>
+              <div class="product-info">
+                <div>
+                  <h4 class="product-title">Hydrating Night Elixir</h4>
+                  <p class="product-category">Ceramide & Bio-Hyaluronic (50ml)</p>
+                  <div style="color: var(--color-accent-gold); font-size: 12px; margin: 4px 0;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
+                </div>
+                <div style="text-align: right;">
+                  <span class="product-price">$54.00</span>
+                  <div style="font-size: 11px; text-decoration: line-through; color: #94a3b8;">$64.00</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: 14px;">
+                <button type="button" class="btn-primary" style="flex: 1; padding: 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-category="serum" style="border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); padding: 18px; background: #fff;">
+              <div class="product-image-box">
+                <span class="product-tag">Award Winner</span>
+                <img src="assets/images/product_oil.webp" alt="Botanical Glow Facial Oil">
+              </div>
+              <div class="product-info">
+                <div>
+                  <h4 class="product-title">Botanical Glow Facial Oil</h4>
+                  <p class="product-category">Cold-pressed organic rosehip (30ml)</p>
+                  <div style="color: var(--color-accent-gold); font-size: 12px; margin: 4px 0;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (5.0)</div>
+                </div>
+                <div style="text-align: right;">
+                  <span class="product-price">$48.00</span>
+                  <div style="font-size: 11px; text-decoration: line-through; color: #94a3b8;">$58.00</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: 14px;">
+                <button type="button" class="btn-primary" style="flex: 1; padding: 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-category="set" style="border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); padding: 18px; background: #fff;">
+              <div class="product-image-box">
+                <span class="product-tag">Signature Launch</span>
+                <img src="assets/images/lily_ritual_set.webp" alt="The Lily Ritual Set">
+              </div>
+              <div class="product-info">
+                <div>
+                  <h4 class="product-title">The Lily Ritual Set</h4>
+                  <p class="product-category">72-Hour moisture barrier lock</p>
+                  <div style="color: var(--color-accent-gold); font-size: 12px; margin: 4px 0;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (5.0)</div>
+                </div>
+                <div style="text-align: right;">
+                  <span class="product-price">$89.00</span>
+                  <div style="font-size: 11px; text-decoration: line-through; color: #94a3b8;">$105.00</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: 14px;">
+                <button type="button" class="btn-primary" style="flex: 1; padding: 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;" onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add to Bag</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 5: PROFILE (MEMBER TIER ANALYTICS, REWARDS LEDGER & SECURITY LOGS)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-user-profile">
+        <!-- Hero Profile Summary -->
+        <div class="profile-hero-card" style="margin-bottom: 24px;">
+          <div class="profile-avatar-large">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="profile-hero-info">
+            <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-accent-gold); font-weight: 700;">VIP Tier 2 &bull; Active Luminary Member</span>
+            <h3 style="font-family: var(--font-serif); font-size: 24px; color: #fff; margin: 4px 0 2px;">Eleanor Vance</h3>
+            <p style="font-size: 13px; color: #d8d3cc; margin: 0;">Customer ID: <strong style="color: #fff;">STK-USR-84019</strong> &bull; Member since February 2026 &bull; Salem, Tamil Nadu</p>
+          </div>
+          <div style="margin-left: auto;">
+            <span class="status-badge delivered" style="background-color: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); font-size: 12px; padding: 8px 16px;">
+              <i class="fa-solid fa-shield-halved"></i> KYC Verified Account
+            </span>
+          </div>
+        </div>
+
+        <!-- 4 Impact Stat Cards Row -->
+        <div class="impact-stats-grid">
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">VIP Membership Tier</div>
+              <div class="impact-stat-value">Tier 2 Luminary</div>
+              <div style="font-size: 11.5px; color: var(--color-forest-green); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-crown"></i> Top 5% Dedicated Members
+              </div>
+            </div>
+            <div class="impact-stat-icon teal">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Reward Points Balance</div>
+              <div class="impact-stat-value">2,450 Pts</div>
+              <div style="font-size: 11.5px; color: var(--color-accent-gold); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-coins"></i> Value: $24.50 Ready
+              </div>
+            </div>
+            <div class="impact-stat-icon blue">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Lifetime Purchases</div>
+              <div class="impact-stat-value">$524.00</div>
+              <div style="font-size: 11.5px; color: #b8424a; font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-receipt"></i> 7 Orders Dispatched
+              </div>
+            </div>
+            <div class="impact-stat-icon peach">
+              <i class="fa-solid fa-wallet"></i>
+            </div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">Zero-Waste Bottles Returned</div>
+              <div class="impact-stat-value">14 Bottles</div>
+              <div style="font-size: 11.5px; color: var(--color-text-dark); font-weight: 600; margin-top: 6px;">
+                <i class="fa-solid fa-recycle"></i> 280g Glass Repurposed
+              </div>
+            </div>
+            <div class="impact-stat-icon yellow">
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Profile Charts Row -->
+        <div class="impact-charts-row">
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-chart-column" style="color: var(--color-forest-green); margin-right: 8px;"></i>
+              Monthly Reward Points Velocity (Earned vs Redeemed)
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 250px; position: relative;">
+              <canvas id="userRewardsVelocityChart"></canvas>
+            </div>
+          </div>
+
+          <div class="impact-chart-card">
+            <div class="impact-chart-title">
+              <i class="fa-solid fa-chart-pie" style="color: var(--color-accent-gold); margin-right: 8px;"></i>
+              Annual Spending by Formulation Category
+            </div>
+            <div class="chart-canvas-wrapper" style="height: 200px; position: relative;">
+              <canvas id="userSeasonalSpendChart"></canvas>
+            </div>
+            <div class="impact-legend">
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #1e4338;"></span> Serums & Oils (38%)</div>
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #c5a059;"></span> Ritual Sets (34%)</div>
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #181614;"></span> Cleansers (16%)</div>
+              <div class="legend-item"><span class="legend-color-box" style="background-color: #b8424a;"></span> Jade Tools (12%)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 1: VIP Member Tier Entitlements & Reward Status -->
+        <div class="dashboard-table-card" style="margin-bottom: 28px;">
+          <div class="table-header-row">
+            <div>
+              <h3>VIP Member Tier Entitlements & Privileges</h3>
+              <p style="font-size: 13px; color: var(--color-text-muted);">Real-time status of unlocked VIP perks, annual allotments, and carbon rewards.</p>
+            </div>
+            <div class="table-toolbar">
+              <span class="status-badge delivered" style="font-size: 12px; padding: 6px 14px;"><i class="fa-solid fa-crown"></i> Luminary VIP Unlocked</span>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Privilege & Entitlement</th>
+                  <th>Tier Level</th>
+                  <th>Benefit Allocation</th>
+                  <th>Active Status</th>
+                  <th>Next Tier Upgrade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Complimentary Cold-Pressed Minis</strong>
+                    <div style="font-size: 11px; color: #64748b;">Deluxe 15ml trial vials included in every dispatch</div>
+                  </td>
+                  <td>Tier 2 Luminary</td>
+                  <td>2 Formulations per Box</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Active</span></td>
+                  <td>3 Minis at Tier 3 Sovereign</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Priority Laboratory Batch Reservation</strong>
+                    <div style="font-size: 11px; color: #64748b;">48-hour pre-launch access to limited harvest extractions</div>
+                  </td>
+                  <td>Tier 2 Luminary</td>
+                  <td>Full Seasonal Access</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Active</span></td>
+                  <td>Unlimited Early Access</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Carbon-Neutral Cold-Chain Express</strong>
+                    <div style="font-size: 11px; color: #64748b;">Zero-emission courier delivery on all orders</div>
+                  </td>
+                  <td>Tier 2 Luminary</td>
+                  <td>100% Free Shipping</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Active</span></td>
+                  <td>Permanent Lifetime Privilege</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Annual 1-on-1 Aesthetician Dermal Review</strong>
+                    <div style="font-size: 11px; color: #64748b;">Personalized skin assessment with Dr. Sophia Laurent</div>
+                  </td>
+                  <td>Tier 2 Luminary</td>
+                  <td>1 Session Available</td>
+                  <td><span class="status-badge shipped"><i class="fa-solid fa-calendar-check"></i> Ready to Claim</span></td>
+                  <td>Quarterly Consultations at Tier 3</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Zero-Waste Glass Packaging Buyback</strong>
+                    <div style="font-size: 11px; color: #64748b;">Store credit for returned pristine amber glass bottles</div>
+                  </td>
+                  <td>Universal Member</td>
+                  <td>$2.00 Store Credit per Bottle</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-recycle"></i> 14 Returned ($28.00)</span></td>
+                  <td>Bonus 1.5x Multiplier at Tier 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 2: Account Security, Device Telemetry & Audit Log (Data-driven, 0 forms) -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>Account Security & Verified Device Sessions</h3>
+              <p style="font-size: 13px; color: var(--color-text-muted);">Real-time audit log of authenticated logins, cryptographic tokens, and authorized devices.</p>
+            </div>
+            <div class="table-toolbar">
+              <span class="status-badge delivered" style="font-size: 12px; padding: 6px 14px;"><i class="fa-solid fa-lock"></i> 256-Bit Encrypted Session</span>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Device & Client Platform</th>
+                  <th>IP Address & Location</th>
+                  <th>Last Authenticated</th>
+                  <th>Session Token</th>
+                  <th>Security Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Chrome 130 on Windows 11</strong>
+                    <div style="font-size: 11px; color: #64748b;">Desktop Workstation &bull; Primary Client</div>
+                  </td>
+                  <td>49.37.142.88 &bull; Salem, Tamil Nadu, IN</td>
+                  <td style="font-weight: 600; color: var(--color-forest-green);">Active Right Now</td>
+                  <td><span style="font-family: monospace; font-size: 11.5px;">tok_live_84019a2</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Current Session</span></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Mobile Safari on Apple iPhone 15 Pro</strong>
+                    <div style="font-size: 11px; color: #64748b;">iOS 18.1 &bull; Biometric FaceID Authenticated</div>
+                  </td>
+                  <td>49.37.142.92 &bull; Salem, Tamil Nadu, IN</td>
+                  <td>Today at 07:42 AM</td>
+                  <td><span style="font-family: monospace; font-size: 11.5px;">tok_mob_44192b1</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Verified Device</span></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>Mobile Safari on iPad Air M2</strong>
+                    <div style="font-size: 11px; color: #64748b;">iPadOS 18.0 &bull; TouchID Authenticated</div>
+                  </td>
+                  <td>157.48.21.14 &bull; Salem, Tamil Nadu, IN</td>
+                  <td>Oct 22, 2026</td>
+                  <td><span style="font-family: monospace; font-size: 11.5px;">tok_tab_99214c7</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Verified Device</span></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <strong>PCI-DSS Stripe Payment Vault</strong>
+                    <div style="font-size: 11px; color: #64748b;">Encrypted Saved Method (Visa ending in 4242)</div>
+                  </td>
+                  <td>Automated Bank Webhook &bull; Global CDN</td>
+                  <td>Oct 24, 2026</td>
+                  <td><span style="font-family: monospace; font-size: 11.5px;">pm_1Ox984K92</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-shield-halved"></i> PCI Tokenized</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div class="toast-notice" id="toast-notice" role="alert">
+    <span class="toast-icon"><i class="fa-solid fa-circle-check"></i></span>
+    <span class="toast-message" id="toast-message">Item added to your bag</span>
+  </div>
+
+  <script>
+    // --- User Dashboard Content Toggling (5 Options Only) ---
+    const userNavItems = document.querySelectorAll('#user-sidebar .dashboard-nav-item[data-tab]');
+    const userTabPanes = document.querySelectorAll('.dashboard-main .tab-pane');
+    const userTopbarTitle = document.getElementById('user-topbar-title');
+    const userSidebar = document.getElementById('user-sidebar');
+    const userSidebarToggle = document.getElementById('user-sidebar-toggle');
+    const userSidebarBackdrop = document.getElementById('user-sidebar-backdrop');
+    const toastNotice = document.getElementById('toast-notice');
+    const toastMessage = document.getElementById('toast-message');
+
+    const userTabDescriptions = {
+      'tab-user-overview': { title: 'My Impact' },
+      'tab-user-orders': { title: 'My Orders' },
+      'tab-user-skin-health': { title: 'Skin Health' },
+      'tab-user-products': { title: 'Products' },
+      'tab-user-profile': { title: 'Profile' }
+    };
+
+    function switchUserTab(targetTabId) {
+      userNavItems.forEach(item => {
+        if (item.getAttribute('data-tab') === targetTabId) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      userTabPanes.forEach(pane => {
+        if (pane.id === targetTabId) {
+          pane.classList.add('active');
+        } else {
+          pane.classList.remove('active');
+        }
+      });
+
+      if (userTabDescriptions[targetTabId]) {
+        userTopbarTitle.textContent = userTabDescriptions[targetTabId].title;
+      }
+
+      // Ensure tab contents always show from the starting point (top)
+      const userMain = document.querySelector('.dashboard-main');
+      if (userMain) userMain.scrollTop = 0;
+      const userContent = document.querySelector('.dashboard-content');
+      if (userContent) userContent.scrollTop = 0;
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      const targetPane = document.getElementById(targetTabId);
+      if (targetPane) targetPane.scrollTop = 0;
+
+      closeUserSidebar();
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+        if (typeof Chart !== 'undefined') {
+          Chart.instances && Object.values(Chart.instances).forEach(c => c && c.resize && c.resize());
+        }
+      }, 60);
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 250);
+    }
+
+    userNavItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabId = item.getAttribute('data-tab');
+        switchUserTab(tabId);
+      });
+    });
+
+    // Functions to open/close mobile sidebar and stop background scrolling
+    function openUserSidebar() {
+      userSidebar.classList.add('mobile-open');
+      userSidebarBackdrop?.classList.add('active');
+      document.body.classList.add('dashboard-sidebar-open');
+      document.documentElement.classList.add('dashboard-sidebar-open');
+    }
+
+    function closeUserSidebar() {
+      userSidebar.classList.remove('mobile-open');
+      userSidebarBackdrop?.classList.remove('active');
+      document.body.classList.remove('dashboard-sidebar-open');
+      document.documentElement.classList.remove('dashboard-sidebar-open');
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+    }
+
+    const userSidebarClose = document.getElementById('user-sidebar-close');
+
+    userSidebarClose?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeUserSidebar();
+    });
+
+    userSidebarToggle?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (userSidebar.classList.contains('mobile-open')) {
+        closeUserSidebar();
+      } else {
+        openUserSidebar();
+      }
+    });
+
+    userSidebarBackdrop?.addEventListener('click', () => {
+      closeUserSidebar();
+    });
+
+    // Stop background touch scrolling when mobile sidebar is open
+    window.addEventListener('touchmove', (e) => {
+      if (userSidebar.classList.contains('mobile-open') && !userSidebar.contains(e.target)) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Scroll restoration: exact section & active tab when back from 404, top on reload
+    (function() {
+      const isBackFrom404 = sessionStorage.getItem('stackly_is_back_from_404') === 'true';
+      const savedDashScroll = sessionStorage.getItem('stackly_dashboard_scroll');
+      const savedDashTab = sessionStorage.getItem('stackly_dashboard_active_tab');
+
+      const navEntry = window.performance && performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      const isReload = (navEntry && navEntry.type === 'reload') || (window.performance && performance.navigation && performance.navigation.type === 1);
+
+      if (isReload) {
+        sessionStorage.removeItem('stackly_is_back_from_404');
+        sessionStorage.removeItem('stackly_dashboard_scroll');
+        sessionStorage.removeItem('stackly_dashboard_active_tab');
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('load', () => {
+          window.scrollTo(0, 0);
+          const m = document.querySelector('.dashboard-main');
+          if (m) m.scrollTop = 0;
+        });
+      } else if (isBackFrom404) {
+        // Restore active tab first if specified
+        if (savedDashTab && typeof switchUserTab === 'function') {
+          switchUserTab(savedDashTab);
+        }
+
+        if (savedDashScroll !== null) {
+          const targetY = parseInt(savedDashScroll, 10);
+          const restoreDash = () => {
+            const m = document.querySelector('.dashboard-main');
+            if (m) {
+              m.style.setProperty('scroll-behavior', 'auto', 'important');
+              m.scrollTop = targetY;
+            }
+          };
+          restoreDash();
+          window.addEventListener('DOMContentLoaded', restoreDash);
+          window.addEventListener('pageshow', restoreDash);
+          if (window.requestAnimationFrame) window.requestAnimationFrame(restoreDash);
+          window.addEventListener('load', () => {
+            restoreDash();
+            sessionStorage.removeItem('stackly_is_back_from_404');
+            sessionStorage.removeItem('stackly_dashboard_scroll');
+            sessionStorage.removeItem('stackly_dashboard_active_tab');
+            const m = document.querySelector('.dashboard-main');
+            if (m) m.style.removeProperty('scroll-behavior');
+          });
+        }
+      }
+    })();
+
+    // Route all buttons & links inside dashboard-content to 404.html without alert/popup
+    const userDashboardContent = document.querySelector('.dashboard-content');
+    if (userDashboardContent) {
+      userDashboardContent.addEventListener('click', (e) => {
+        const clickable = e.target.closest('button, a');
+        if (clickable) {
+          e.preventDefault();
+          e.stopPropagation();
+          const m = document.querySelector('.dashboard-main');
+          const activeTabItem = document.querySelector('.dashboard-nav-item.active');
+          const activeTab = activeTabItem ? activeTabItem.getAttribute('data-tab') : 'tab-user-overview';
+          sessionStorage.setItem('stackly_is_back_from_404', 'true');
+          sessionStorage.setItem('stackly_404_prev_url', window.location.href);
+          sessionStorage.setItem('stackly_dashboard_active_tab', activeTab);
+          sessionStorage.setItem('stackly_dashboard_scroll', String(m ? m.scrollTop : 0));
+          window.location.href = '404.html';
+        }
+      }, true);
+    }
+
+    // --- Load User Auth Credentials from Login Page (Blue Marked Area) ---
+    function loadUserAuthData() {
+      const storedEmail = localStorage.getItem('stackly_auth_email') || 'user@stackly.com';
+      const storedRole = localStorage.getItem('stackly_auth_role') || 'user';
+      let storedRoleName = 'User Dashboard';
+
+      // Compute avatar initial from email or role
+      const emailInitial = (storedEmail.charAt(0) || (storedRole === 'admin' ? 'A' : 'U')).toUpperCase();
+
+      // Update Topbar (Blue Marked Area 1)
+      const topbarName = document.getElementById('user-topbar-name');
+      const topbarEmail = document.getElementById('user-topbar-email');
+      const topbarAvatar = document.getElementById('user-topbar-avatar');
+      if (topbarName) topbarName.textContent = storedRoleName;
+      if (topbarEmail) topbarEmail.textContent = storedEmail;
+      if (topbarAvatar) topbarAvatar.textContent = emailInitial;
+
+      // Update Sidebar Footer (Blue Marked Area 2)
+      const sidebarName = document.getElementById('user-sidebar-name');
+      const sidebarEmail = document.getElementById('user-sidebar-email');
+      const sidebarAvatar = document.getElementById('user-sidebar-avatar');
+      if (sidebarName) sidebarName.textContent = storedRoleName;
+      if (sidebarEmail) sidebarEmail.textContent = storedEmail;
+      if (sidebarAvatar) sidebarAvatar.textContent = emailInitial;
+    }
+
+    // --- User Dashboard Charts Initialization (Website Palette & Real-Time Data) ---
+    function initAllUserDashboard() {
+      loadUserAuthData();
+      initUserCharts();
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initAllUserDashboard);
+    } else {
+      initAllUserDashboard();
+    }
+
+    function initUserCharts() {
+      // 1. Overview: Monthly Field Output Distribution Bar Chart (Website Palette: Forest Green)
+      const ctxField = document.getElementById('monthlyFieldOutputChartUser')?.getContext('2d');
+      if (ctxField) {
+        new Chart(ctxField, {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+              label: 'Output Distribution',
+              data: [4, 8, 6, 12, 5, 7],
+              backgroundColor: '#1e4338',
+              hoverBackgroundColor: '#153229',
+              borderRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 14,
+                ticks: { stepSize: 2, color: '#7a756d', font: { size: 11 } },
+                grid: { color: '#ece8e1' }
+              },
+              x: {
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 2. Overview: Operational Focus Allocation Doughnut Chart
+      const ctxFocus = document.getElementById('operationalFocusChartUser')?.getContext('2d');
+      if (ctxFocus) {
+        new Chart(ctxFocus, {
+          type: 'doughnut',
+          data: {
+            labels: ['Beach Cleans', 'Awareness Ops', 'Fund Pools'],
+            datasets: [{
+              data: [45, 35, 20],
+              backgroundColor: ['#1e4338', '#c5a059', '#181614'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            cutout: '62%'
+          }
+        });
+      }
+
+      // 3. Overview: Order Frequency History Line Chart (Red Marked Area 1)
+      const ctxOrderHist = document.getElementById('userOrderHistoryChart')?.getContext('2d');
+      if (ctxOrderHist) {
+        new Chart(ctxOrderHist, {
+          type: 'line',
+          data: {
+            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [{
+              label: 'Purchases ($)',
+              data: [48, 62, 0, 96, 127, 89],
+              borderColor: '#1e4338',
+              backgroundColor: 'rgba(30, 67, 56, 0.08)',
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#1e4338',
+              pointBorderColor: '#ffffff',
+              pointBorderWidth: 2,
+              pointRadius: 5,
+              pointHoverRadius: 7
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return ' Purchases: $' + context.parsed.y;
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  color: '#7a756d',
+                  font: { size: 11 },
+                  callback: v => '$' + v
+                },
+                grid: { color: '#ece8e1' }
+              },
+              x: {
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 4. Overview: My Skincare Product Categories Doughnut Chart (Red Marked Area 2)
+      const ctxUserPie = document.getElementById('userCategoryPieChart')?.getContext('2d');
+      if (ctxUserPie) {
+        new Chart(ctxUserPie, {
+          type: 'doughnut',
+          data: {
+            labels: ['The Lily Ritual Set (42%)', 'Botanical Facial Oil (32%)', 'Jade Roller Set (16%)', 'Gel Cleanser (10%)'],
+            datasets: [{
+              data: [42, 32, 16, 10],
+              backgroundColor: ['#1e4338', '#c5a059', '#181614', '#b8424a'],
+              hoverBackgroundColor: ['#153229', '#ab8b4b', '#000000', '#9b323a'],
+              borderWidth: 2,
+              borderColor: '#ffffff'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  boxWidth: 12,
+                  font: { size: 11.5 },
+                  color: '#7a756d',
+                  padding: 12
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return ' ' + context.label;
+                  }
+                }
+              }
+            },
+            cutout: '60%'
+          }
+        });
+      }
+
+      // 3. Orders: Spending History & Trend Line Chart
+      const ctxOrderSpend = document.getElementById('userOrderSpendingChart')?.getContext('2d');
+      if (ctxOrderSpend) {
+        new Chart(ctxOrderSpend, {
+          type: 'line',
+          data: {
+            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov (Proj)'],
+            datasets: [{
+              label: 'Purchases ($ USD)',
+              data: [48, 62, 0, 96, 127, 89, 95],
+              borderColor: '#1e4338',
+              backgroundColor: 'rgba(30, 67, 56, 0.08)',
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#1e4338',
+              pointBorderColor: '#fff',
+              pointBorderWidth: 2,
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { color: '#7a756d', font: { size: 11 }, callback: v => '$' + v },
+                grid: { color: '#ece8e1' }
+              },
+              x: {
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 4. Orders: Fulfillment Status Doughnut Chart
+      const ctxOrderStatus = document.getElementById('userOrderStatusDoughnut')?.getContext('2d');
+      if (ctxOrderStatus) {
+        new Chart(ctxOrderStatus, {
+          type: 'doughnut',
+          data: {
+            labels: ['Delivered (85.7%)', 'Out for Delivery (14.3%)'],
+            datasets: [{
+              data: [6, 1],
+              backgroundColor: ['#1e4338', '#c5a059'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            cutout: '65%'
+          }
+        });
+      }
+
+      // 5. Skin Health: 8-Week Hydration Progression Line Chart
+      const ctxHydration = document.getElementById('userHydrationProgressionChart')?.getContext('2d');
+      if (ctxHydration) {
+        new Chart(ctxHydration, {
+          type: 'line',
+          data: {
+            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8'],
+            datasets: [
+              {
+                label: 'Corneum Moisture (%)',
+                data: [64, 69, 73, 78, 84, 88, 91, 94],
+                borderColor: '#1e4338',
+                backgroundColor: 'rgba(30, 67, 56, 0.08)',
+                fill: true,
+                tension: 0.35,
+                pointBackgroundColor: '#1e4338',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 4
+              },
+              {
+                label: 'Clinical Optimal Target (85%)',
+                data: [85, 85, 85, 85, 85, 85, 85, 85],
+                borderColor: '#c5a059',
+                borderDash: [5, 5],
+                borderWidth: 2,
+                pointRadius: 0,
+                fill: false
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                labels: { boxWidth: 12, font: { size: 11 }, color: '#7a756d' }
+              }
+            },
+            scales: {
+              y: {
+                min: 50,
+                max: 100,
+                ticks: { color: '#7a756d', font: { size: 11 }, callback: v => v + '%' },
+                grid: { color: '#ece8e1' }
+              },
+              x: {
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 6. Skin Health: Weekly Ritual Step Adherence Bar Chart
+      const ctxAdherence = document.getElementById('userRitualAdherenceBar')?.getContext('2d');
+      if (ctxAdherence) {
+        new Chart(ctxAdherence, {
+          type: 'bar',
+          data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [
+              {
+                label: 'Morning Routine (AM)',
+                data: [100, 100, 100, 100, 100, 100, 100],
+                backgroundColor: '#1e4338',
+                borderRadius: 4
+              },
+              {
+                label: 'Evening Routine (PM)',
+                data: [100, 100, 100, 100, 100, 100, 100],
+                backgroundColor: '#c5a059',
+                borderRadius: 4
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                labels: { boxWidth: 12, font: { size: 11 }, color: '#7a756d' }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { color: '#7a756d', font: { size: 11 }, callback: v => v + '%' },
+                grid: { color: '#ece8e1' }
+              },
+              x: {
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 7. Products: Shelf Depletion Horizontal Bar Chart
+      const ctxShelf = document.getElementById('userShelfDepletionChart')?.getContext('2d');
+      if (ctxShelf) {
+        new Chart(ctxShelf, {
+          type: 'bar',
+          data: {
+            labels: ['Lily Ritual Set', 'Botanical Glow Oil', 'Gel Cleanser', 'Night Elixir'],
+            datasets: [{
+              label: 'Fluid Volume Left (%)',
+              data: [22, 48, 68, 84],
+              backgroundColor: ['#b8424a', '#c5a059', '#1e4338', '#1e4338'],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { color: '#7a756d', font: { size: 11 }, callback: v => v + '%' },
+                grid: { color: '#ece8e1' }
+              },
+              y: {
+                ticks: { color: '#181614', font: { size: 11, weight: '600' } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 8. Products: Botanical Ingredient Distribution Doughnut Chart
+      const ctxBio = document.getElementById('userIngredientBioChart')?.getContext('2d');
+      if (ctxBio) {
+        new Chart(ctxBio, {
+          type: 'doughnut',
+          data: {
+            labels: ['White Lily (38%)', 'Rosehip Oil (30%)', 'Green Tea (18%)', 'Bio-Hyaluronic (14%)'],
+            datasets: [{
+              data: [38, 30, 18, 14],
+              backgroundColor: ['#1e4338', '#c5a059', '#181614', '#b8424a'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            cutout: '62%'
+          }
+        });
+      }
+
+      // 9. Profile: Monthly Reward Points Velocity Bar Chart
+      const ctxRewards = document.getElementById('userRewardsVelocityChart')?.getContext('2d');
+      if (ctxRewards) {
+        new Chart(ctxRewards, {
+          type: 'bar',
+          data: {
+            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [
+              {
+                label: 'Points Earned',
+                data: [480, 620, 0, 960, 1270, 890],
+                backgroundColor: '#1e4338',
+                borderRadius: 4
+              },
+              {
+                label: 'Points Redeemed',
+                data: [0, 500, 0, 0, 1000, 270],
+                backgroundColor: '#c5a059',
+                borderRadius: 4
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                labels: { boxWidth: 12, font: { size: 11 }, color: '#7a756d' }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { color: '#ece8e1' }
+              },
+              x: {
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 10. Profile: Annual Spending by Category Doughnut Chart
+      const ctxSpend = document.getElementById('userSeasonalSpendChart')?.getContext('2d');
+      if (ctxSpend) {
+        new Chart(ctxSpend, {
+          type: 'doughnut',
+          data: {
+            labels: ['Serums & Oils (38%)', 'Ritual Sets (34%)', 'Cleansers (16%)', 'Jade Tools (12%)'],
+            datasets: [{
+              data: [38, 34, 16, 12],
+              backgroundColor: ['#1e4338', '#c5a059', '#181614', '#b8424a'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            cutout: '62%'
+          }
+        });
+      }
+    }
+
+    // --- Add to Cart Simulation in User Products ---
+    function addToUserCart(productName) {
+      const map = {
+        'Purifying Gel Cleanser': 1,
+        'Hydrating Night Elixir': 2,
+        'Botanical Glow Facial Oil': 3,
+        'Rejuvenating Jade Set': 4,
+        'Rejuvenating Jade Ritual Set': 4,
+        'The Lily Ritual Set': 5
+      };
+      const pid = map[productName] || 1;
+      try {
+        let currentCart = JSON.parse(localStorage.getItem('stackly_cart') || '[]');
+        const existing = currentCart.find(i => i.id === pid);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          currentCart.push({ id: pid, qty: 1 });
+        }
+        localStorage.setItem('stackly_cart', JSON.stringify(currentCart));
+      } catch (e) {}
+      showToast(`Added ${productName} to your shopping bag!`);
+    }
+
+    function filterUserCatalog() {
+      const cat = document.getElementById('userCatalogFilter').value;
+      const cards = document.querySelectorAll('#userCatalogGrid .product-card');
+
+      cards.forEach(card => {
+        const c = card.getAttribute('data-category');
+        if (cat === 'all' || c === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toastNotice.classList.add('show');
+      setTimeout(() => { toastNotice.classList.remove('show'); }, 3500);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog &amp; Journal — Stackly Organic Luxury Skincare</title>
+  <meta name="description" content="Expert skincare routines, botanical ingredient guides, circadian protocols, and formulation monographs written by licensed aestheticians.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Global Sticky Navbar -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo" aria-label="Stackly Homepage">
+        <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="our-mission.html" class="nav-link">Our Mission</a>
+        <a href="buying-guide.html" class="nav-link">Buying Guide</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="nav-actions">
+        <!-- Direct Cart Link -->
+        <a href="cart.html" class="nav-action-btn cart-btn" id="nav-cart-btn" aria-label="View Shopping Bag">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cart-counter">0</span>
+        </a>
+
+        <!-- Login Button -->
+        <a href="login.html" class="btn-login" aria-label="Login to Stackly">
+          <i class="fa-solid fa-user"></i>
+          <span>Login</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <!-- Mobile Navigation Drawer (Full Screen) -->
+  <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo" aria-label="Stackly Homepage">
+        <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img">
+      </a>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close navigation menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="index.html" class="mobile-nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="shop.html" class="mobile-nav-link"><span>Shop</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="our-mission.html" class="mobile-nav-link"><span>Our Mission</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="buying-guide.html" class="mobile-nav-link"><span>Buying Guide</span> <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link"><span>Contact</span> <i class="fa-solid fa-chevron-right"></i></a>
+     <a href="login.html" class="btn-login" style="margin-top: 16px; justify-content: center;">
+        <i class="fa-solid fa-user"></i> <span>Login</span>
+      </a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <p class="mobile-drawer-brand">STACKLY BOTANICAL LUXURY</p>
+      <p class="mobile-drawer-copy">&copy; 2026 Stackly Inc. All rights reserved.</p>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ==========================================================================
+         PAGE HERO BANNER
+         ========================================================================== -->
+    <section class="page-hero">
+      <div class="container" data-aos="fade-up">
+        <span class="section-tag">The Skincare Journal</span>
+        <h1 class="page-hero-title">Botanical Journal &amp; Dermal Wisdom</h1>
+        <p class="page-hero-desc">
+          Evidence-based botanical science, circadian skincare routines, and formulation monographs curated by our cosmetic chemists and holistic aestheticians.
+        </p>
+      </div>
+    </section>
+
+  
+
+    <!-- ==========================================================================
+         UNIQUE SECTION 1: CIRCADIAN SKIN CHRONOBIOLOGY PROTOCOL
+         Innovative 4-Phase Horizontal Diurnal Timeline Flow
+         ========================================================================== -->
+    <section class="blog-circadian-section" id="circadian-protocol">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <span class="section-tag"><i class="fa-solid fa-clock-rotate-left"></i> Diurnal Chronobiology</span>
+          <h2 class="section-title">The 24-Hour Dermal Circadian Rhythm</h2>
+          <p class="section-subtitle">
+            Cellular permeability, sebum production, and enzymatic DNA repair fluctuate across daylight and darkness. Align your ritual with your skin's biological clock.
+          </p>
+        </div>
+
+        <div class="circadian-timeline-wrapper" data-aos="fade-up" data-aos-delay="100">
+          <div class="circadian-progress-track" aria-hidden="true">
+            <span class="circadian-track-line"></span>
+          </div>
+
+          <div class="circadian-cards-grid">
+            <!-- Phase 1: Morning -->
+            <article class="circadian-card phase-morning" data-aos="fade-up" data-aos-delay="150">
+              <div class="circadian-card-header">
+                <div class="circadian-time-badge">
+                  <i class="fa-regular fa-sun"></i>
+                  <span>07:00 AM</span>
+                </div>
+                <span class="circadian-phase-label">Diurnal Defense</span>
+              </div>
+              <h3 class="circadian-title">Photonic Shielding &amp; Antioxidant Guard</h3>
+              <p class="circadian-desc">
+                Morning cortisol peaks sebum production while UV exposure generates singlet oxygen. Shield cellular lipids before inflammation occurs.
+              </p>
+              <div class="circadian-actives-box">
+                <span class="actives-title">Key Synergies:</span>
+                <span class="active-tag">L-Ascorbic Acid</span>
+                <span class="active-tag">EGCG Green Tea</span>
+                <span class="active-tag">Zinc Mineral Mesh</span>
+              </div>
+              <div class="circadian-footer">
+                <span class="circadian-metric"><i class="fa-solid fa-shield-halved"></i> 99.2% Free Radical Capture</span>
+                <a href="404.html" class="circadian-action-link" aria-label="Explore Morning Protocol">
+                  <span>View Protocol</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Phase 2: Midday -->
+            <article class="circadian-card phase-midday" data-aos="fade-up" data-aos-delay="200">
+              <div class="circadian-card-header">
+                <div class="circadian-time-badge">
+                  <i class="fa-solid fa-cloud-sun"></i>
+                  <span>01:00 PM</span>
+                </div>
+                <span class="circadian-phase-label">Barrier Equilibration</span>
+              </div>
+              <h3 class="circadian-title">Micro-Vascular Moisture Replenishment</h3>
+              <p class="circadian-desc">
+                Environmental heat and indoor HVAC accelerate transepidermal evaporation. Refresh intracellular moisture without dislodging essential barrier lipids.
+              </p>
+              <div class="circadian-actives-box">
+                <span class="actives-title">Key Synergies:</span>
+                <span class="active-tag">Botanical Hydrosols</span>
+                <span class="active-tag">Snow Mushroom</span>
+                <span class="active-tag">Ectoin Stress Defense</span>
+              </div>
+              <div class="circadian-footer">
+                <span class="circadian-metric"><i class="fa-solid fa-droplet"></i> +48% Instant Hydration</span>
+                <a href="404.html" class="circadian-action-link" aria-label="Explore Midday Protocol">
+                  <span>View Protocol</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Phase 3: Evening -->
+            <article class="circadian-card phase-evening" data-aos="fade-up" data-aos-delay="250">
+              <div class="circadian-card-header">
+                <div class="circadian-time-badge">
+                  <i class="fa-solid fa-leaf"></i>
+                  <span>08:30 PM</span>
+                </div>
+                <span class="circadian-phase-label">Cellular Decongest</span>
+              </div>
+              <h3 class="circadian-title">Gentle Dissolution &amp; Biomimetic Cleansing</h3>
+              <p class="circadian-desc">
+                Dermal microcirculation accelerates and temperature rises. Remove accumulated airborne PM2.5 particulates with biocompatible cold-pressed oils.
+              </p>
+              <div class="circadian-actives-box">
+                <span class="actives-title">Key Synergies:</span>
+                <span class="active-tag">Jojoba Esters</span>
+                <span class="active-tag">Centella Asiatica</span>
+                <span class="active-tag">Phytosterols</span>
+              </div>
+              <div class="circadian-footer">
+                <span class="circadian-metric"><i class="fa-solid fa-heart-pulse"></i> Zero Barrier Disruption</span>
+                <a href="404.html" class="circadian-action-link" aria-label="Explore Evening Protocol">
+                  <span>View Protocol</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Phase 4: Overnight -->
+            <article class="circadian-card phase-overnight" data-aos="fade-up" data-aos-delay="300">
+              <div class="circadian-card-header">
+                <div class="circadian-time-badge">
+                  <i class="fa-solid fa-moon"></i>
+                  <span>11:30 PM</span>
+                </div>
+                <span class="circadian-phase-label">Deep Mitosis</span>
+              </div>
+              <h3 class="circadian-title">Nocturnal Gene Renewal &amp; Lipid Synthesis</h3>
+              <p class="circadian-desc">
+                Fibroblast cell division reaches maximum velocity while melatonin triggers enzymatic repair. Infuse replenishing ceramides and plant peptides.
+              </p>
+              <div class="circadian-actives-box">
+                <span class="actives-title">Key Synergies:</span>
+                <span class="active-tag">Ceramide NP/AP/EOP</span>
+                <span class="active-tag">Bakuchiol 2.0</span>
+                <span class="active-tag">Copper Tripeptide-1</span>
+              </div>
+              <div class="circadian-footer">
+                <span class="circadian-metric"><i class="fa-solid fa-dna"></i> 2.8x Fibroblast Regeneration</span>
+                <a href="404.html" class="circadian-action-link" aria-label="Explore Overnight Protocol">
+                  <span>View Protocol</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         UNIQUE SECTION 2: THE BOTANICAL ATELIER & SYNERGY MATRIX
+         Asymmetrical Editorial Dossier + Interactive Ingredient Synergy Spectrum
+         ========================================================================== -->
+    <section class="blog-atelier-section" id="formulation-atelier">
+      <div class="container">
+        <div class="atelier-layout-grid">
+          
+          <!-- Left Column: Editorial Feature & Aesthetician Monograph -->
+          <div class="atelier-dossier-column" data-aos="fade-right">
+            <div class="atelier-visual-wrapper">
+              <img src="assets/images/guide_dropper_hands.webp" alt="Formulation chemist analyzing cold-extracted bio-lipids" class="atelier-hero-img" width="600" height="700" loading="lazy">
+              
+              <div class="atelier-floating-stamp">
+                <i class="fa-solid fa-certificate"></i>
+                <div>
+                  <strong>Monograph #14</strong>
+                  <span>Clinical Lipid Synergy</span>
+                </div>
+              </div>
+
+              <div class="atelier-quote-card">
+                <p class="atelier-quote-text">
+                  &ldquo;Skin barrier vitality is never about aggressive stimulation. It is about presenting the stratum corneum with biocompatible lipid ratios that mimic the human epidermis.&rdquo;
+                </p>
+                <div class="atelier-author-info">
+                  <img src="assets/images/avatar_vivienne.webp" alt="Dr. Vivienne Vance" class="atelier-author-avatar" width="40" height="40" loading="lazy">
+                  <div>
+                    <h4 class="atelier-author-name">Dr. Vivienne Vance</h4>
+                    <span class="atelier-author-role">Director of Dermal Formulation &bull; Stackly Lab</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Synergy Matrix Cards -->
+          <div class="atelier-synergy-column" data-aos="fade-left">
+            <div class="atelier-column-header">
+              <span class="section-tag"><i class="fa-solid fa-atom"></i> Molecular Botanical Harmony</span>
+              <h2 class="section-title">The Master Synergy Matrix</h2>
+              <p class="section-subtitle">
+                Isolated ingredients offer partial benefits. When paired in synergistic molecular ratios, botanical actives amplify efficacy exponentially.
+              </p>
+            </div>
+
+            <div class="atelier-synergies-stack">
+              <!-- Synergy 1 -->
+              <div class="atelier-synergy-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="synergy-card-icon-box">
+                  <i class="fa-solid fa-shield-virus"></i>
+                </div>
+                <div class="synergy-card-content">
+                  <div class="synergy-meta-row">
+                    <span class="synergy-category">Barrier Architecture</span>
+                    <span class="synergy-metric-badge">+94% Lipid Retention</span>
+                  </div>
+                  <h3 class="synergy-card-title">Phytoceramides + Cold-Pressed Rosehip Seed</h3>
+                  <p class="synergy-card-desc">
+                    Polyunsaturated linoleic acids fill microscopic intercellular voids, while ceramide sphingoids create an impermeable protective veil against trans-epidermal fluid loss.
+                  </p>
+                  <div class="synergy-card-footer">
+                    <span class="synergy-clinical-note"><i class="fa-regular fa-circle-check"></i> In-vivo tested on 48 volunteers across 28 days</span>
+                    <a href="404.html" class="synergy-link" aria-label="Explore Phytoceramides Monograph">
+                      <span>Explore Monograph</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Synergy 2 -->
+              <div class="atelier-synergy-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="synergy-card-icon-box">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="synergy-card-content">
+                  <div class="synergy-meta-row">
+                    <span class="synergy-category">Cellular Radiance</span>
+                    <span class="synergy-metric-badge">3.2x Tyrosinase Inhibition</span>
+                  </div>
+                  <h3 class="synergy-card-title">Organic White Lily Saponins + Licorice Glabridin</h3>
+                  <p class="synergy-card-desc">
+                    Naturally clears post-inflammatory hyperpigmentation without irritation. Disrupts melanin transfer pathways while accelerating cellular clarity and luminosity.
+                  </p>
+                  <div class="synergy-card-footer">
+                    <span class="synergy-clinical-note"><i class="fa-regular fa-circle-check"></i> Clinically validated gentler than synthetic hydroquinone</span>
+                    <a href="404.html" class="synergy-link" aria-label="Explore White Lily Monograph">
+                      <span>Explore Monograph</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Synergy 3 -->
+              <div class="atelier-synergy-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="synergy-card-icon-box">
+                  <i class="fa-solid fa-spa"></i>
+                </div>
+                <div class="synergy-card-content">
+                  <div class="synergy-meta-row">
+                    <span class="synergy-category">Nocturnal Mitosis</span>
+                    <span class="synergy-metric-badge">+71% Collagen Fibroblast Density</span>
+                  </div>
+                  <h3 class="synergy-card-title">Ayurvedic Bakuchiol + Oligopeptide Complex</h3>
+                  <p class="synergy-card-desc">
+                    Up-regulates Type I and IV collagen gene expression without the peeling or erythema associated with prescription retinoids. Enhances dermal resilience and bounce.
+                  </p>
+                  <div class="synergy-card-footer">
+                    <span class="synergy-clinical-note"><i class="fa-regular fa-circle-check"></i> Safe for pregnancy &amp; sensitive dermal profiles</span>
+                    <a href="404.html" class="synergy-link" aria-label="Explore Bakuchiol Monograph">
+                      <span>Explore Monograph</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid-4col">
+        <!-- Column 1: Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo footer-logo" aria-label="Stackly Homepage">
+            <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img brand-logo-light">
+          </a>
+          <p class="footer-about">
+            Consciously formulated organic skincare merging pure cold-pressed botanical extracts with clean clinical performance to honor your skin's natural beauty.
+          </p>
+          <div class="footer-socials">
+<a aria-label="Instagram" class="social-icon" href="404.html">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a aria-label="Facebook" class="social-icon" href="404.html">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+<a aria-label="Twitter" class="social-icon" href="404.html">
+<i class="fa-brands fa-x-twitter"></i>
+</a>
+<a aria-label="Pinterest" class="social-icon" href="404.html">
+<i class="fa-brands fa-pinterest-p"></i>
+</a>
+<a aria-label="LinkedIn" class="social-icon" href="404.html">
+<i class="fa-brands fa-linkedin-in"></i>
+</a>
+</div>
+        </div>
+
+        <!-- Column 2: Quick Links (Strictly 5 links, NO login) -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li><a href="shop.html"><i class="fa-solid fa-angle-right"></i> Shop</a></li>
+            <li><a href="our-mission.html"><i class="fa-solid fa-angle-right"></i> Our Mission</a></li>
+            <li><a href="buying-guide.html"><i class="fa-solid fa-angle-right"></i> Buying Guide</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="footer-col">
+          <h4>Policies</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-file-contract"></i> Terms and Conditions</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-cookie-bite"></i> Cookie Policy</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-circle-info"></i> Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact Us -->
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-list">
+            <div class="contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+            </div>
+            <div class="contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:info@stackly.com">info@stackly.com</a>
+            </div>
+            <div class="contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:9876543210">9876543210</a>
+            </div>
+            <div>
+              <a href="https://www.google.com/maps/place/Stackly/@11.6829566,78.1739798,17z/data=!3m1!4b1!4m6!3m5!1s0x3babefef7fd970bb:0xe11aef1a71994f9!8m2!3d11.6829566!4d78.1739798!16s%2Fg%2F11l660s35r?entry=ttu&g_ep=EgoyMDI2MDcwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="map-btn-link">
+                <i class="fa-solid fa-map-location-dot"></i> View on Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms and Conditions</a>
+          <a href="404.html">Cookie Policy</a>
+          <a href="404.html">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer Overlay & Container -->
+  <div class="cart-drawer-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button class="cart-close-btn" onclick="closeCart()" aria-label="Close Shopping Bag"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-shipping-notice">
+      <span id="shipping-text">Add $21.00 more for <strong>FREE Worldwide Shipping</strong></span>
+      <div class="shipping-bar"><div class="shipping-progress" id="shipping-progress" style="width: 72%;"></div></div>
+    </div>
+    <div class="cart-items" id="cart-items-container"></div>
+    <div class="cart-footer">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cart-subtotal-val">$92.00</span></div>
+      <button class="btn-checkout" onclick="handleCheckout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <div class="toast-notice" id="toast-notice" role="alert">
+    <span class="toast-icon"><i class="fa-solid fa-circle-check"></i></span>
+    <span class="toast-message" id="toast-message">Item added to your bag</span>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Stackly Skincare Store Management</title>
+  <meta name="description" content="Professional Skincare Store Admin Dashboard for products, customers, orders, inventory, and analytics.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: var(--color-bg-dashboard);">
+
+  <div class="dashboard-layout">
+    <!-- Admin Sidebar: ONLY 5 PRIMARY MENU OPTIONS (Guideline Requirement) -->
+    <aside class="dashboard-sidebar" id="admin-sidebar">
+      <!-- Dashboard Brand Header (Turn 17: Brand Logo & Page Denotion) -->
+      <div class="dashboard-brand-header">
+        <div class="sidebar-brand-top">
+          <a href="" class="logo" aria-label="Stackly Homepage">
+            <img src="assets/images/logo.webp" alt="Stackly" class="brand-logo-img dashboard-logo-img">
+          </a>
+          <button type="button" class="sidebar-close-btn" id="admin-sidebar-close" aria-label="Close Sidebar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="dashboard-page-badge admin-badge">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Admin Dashboard</span>
+        </div>
+      </div>
+
+      <!-- 5 Primary Sidebar Options -->
+      <nav class="dashboard-nav-list" aria-label="Admin Navigation Menu">
+        <a href="#overview" class="dashboard-nav-item active" data-tab="tab-overview" id="nav-item-overview">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Overview</span>
+        </a>
+        <a href="#products" class="dashboard-nav-item" data-tab="tab-products" id="nav-item-products">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Products</span>
+        </a>
+        <a href="#customers" class="dashboard-nav-item" data-tab="tab-customers" id="nav-item-customers">
+          <i class="fa-solid fa-users"></i>
+          <span>Customers</span>
+        </a>
+        <a href="#orders" class="dashboard-nav-item" data-tab="tab-orders" id="nav-item-orders">
+          <i class="fa-solid fa-truck-fast"></i>
+          <span>Orders</span>
+        </a>
+        <a href="#analytics" class="dashboard-nav-item" data-tab="tab-analytics" id="nav-item-analytics">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Analytics</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer matching Image 1: User Profile Card + Red Logout -->
+      <div class="dashboard-sidebar-footer">
+        <div class="sidebar-user-card">
+          <div class="avatar-teal-ring" id="admin-sidebar-avatar">A</div>
+          <div class="sidebar-user-details">
+            <div class="sidebar-user-name" id="admin-sidebar-name">Admin Dashboard</div>
+            <div class="sidebar-user-email" id="admin-sidebar-email">admin@stackly.com</div>
+          </div>
+        </div>
+        <a href="login.html" class="sidebar-logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="sidebar-backdrop" id="admin-sidebar-backdrop"></div>
+
+    <!-- Main Content Area with Content Toggling -->
+    <main class="dashboard-main">
+      <!-- Topbar Header matching Image 1 & Image 2 -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar-left">
+          <button type="button" class="mobile-menu-btn" id="admin-sidebar-toggle" aria-label="Toggle Navigation Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div style="display: inline-flex; align-items: center; flex-wrap: wrap;">
+            <h2 class="topbar-heading-title" id="topbar-page-title">Dashboard Overview</h2>
+           </div>
+        </div>
+
+        <div class="dashboard-topbar-right">
+          <div class="topbar-user-info">
+            <div class="topbar-user-name" id="admin-topbar-name">Admin Dashboard</div>
+            <div class="topbar-user-email" id="admin-topbar-email">admin@stackly.com</div>
+          </div>
+          <div class="avatar-teal-ring" id="admin-topbar-avatar">A</div>
+        </div>
+      </header>
+
+      <!-- Dashboard Scrollable Content Area -->
+      <div class="dashboard-content">
+        <!-- ==========================================================================
+             TAB 1: OVERVIEW (EXACT IMAGE 1 & IMAGE 2 ARCHITECTURE)
+             ========================================================================== -->
+        <section class="tab-pane active" id="tab-overview">
+        <!-- Overview Dashboard Section Header (Image 1) -->
+        <div class="content-section-header">
+          <h1 class="content-section-title">Overview Dashboard</h1>
+          <p class="content-section-subtitle">Real-time tracking profile of your ecological footprint contribution metrics.</p>
+        </div>
+
+        <!-- 4 Metric Cards in a row (Image 1) -->
+        <div class="impact-stats-grid">
+         
+
+          <!-- Card 2 -->
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">VOLUNTEER HOURS</div>
+              <div class="impact-stat-value">42 hrs</div>
+            </div>
+            <div class="impact-stat-icon blue">
+              <i class="fa-solid fa-hourglass-half"></i>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">PLASTIC MITIGATED</div>
+              <div class="impact-stat-value">4 Ton</div>
+            </div>
+            <div class="impact-stat-icon peach">
+              <i class="fa-solid fa-recycle"></i>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="impact-stat-card">
+            <div class="impact-stat-info">
+              <div class="impact-stat-label">ECO POINTS BAL</div>
+              <div class="impact-stat-value">2,450</div>
+            </div>
+            <div class="impact-stat-icon yellow">
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Data Charts (Image 1) -->
+        <div class="impact-charts-row">
+          <!-- Left: Monthly Field Output Distribution Bar Chart -->
+          <div class="impact-chart-card">
+            <h3 class="impact-chart-title">Monthly Field Output Distribution</h3>
+            <div class="chart-canvas-wrapper" style="height: 280px;">
+              <canvas id="monthlyFieldOutputChartAdmin"></canvas>
+            </div>
+          </div>
+
+          <!-- Right: Operational Focus Allocation Pie Chart -->
+          <div class="impact-chart-card">
+            <h3 class="impact-chart-title">Operational Focus Allocation</h3>
+            <div class="chart-canvas-wrapper" style="height: 220px;">
+              <canvas id="operationalFocusChartAdmin"></canvas>
+            </div>
+            <div class="impact-legend">
+              <div class="legend-item">
+                <span class="legend-color-box" style="background-color: var(--color-forest-green);"></span>
+                <span>Beach Cleans</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color-box" style="background-color: var(--color-accent-gold);"></span>
+                <span>Awareness Ops</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color-box" style="background-color: var(--color-text-dark);"></span>
+                <span>Fund Pools</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Section: Carbon Offsetting & Sequestration Metrics (Image 1) -->
+        <div class="impact-subheading">
+          <i class="fa-solid fa-seedling" style="color: var(--color-forest-green);"></i>
+          <span>Carbon Offsetting & Sequestration Metrics</span>
+        </div>
+
+        <div class="impact-highlight-grid">
+          <div class="impact-highlight-card green-accent">
+            <div class="impact-highlight-label">ESTIMATED CO2 ABSORPTION</div>
+            <div class="impact-highlight-value green">1.4 Tons</div>
+          </div>
+
+          <div class="impact-highlight-card teal-accent">
+            <div class="impact-highlight-label">MANGROVE STOCKS SECURED</div>
+            <div class="impact-highlight-value teal">28 Units</div>
+          </div>
+
+          <div class="impact-highlight-card orange-accent">
+            <div class="impact-highlight-label">PROJECTED 10-YR YIELD</div>
+            <div class="impact-highlight-value orange">14.2 Tons</div>
+          </div>
+        </div>
+        <!-- 6 Overview Metric Cards -->
+        <div class="dashboard-stats-grid-6">
+          <div class="stat-metric-card">
+            <div class="metric-icon-box green"><i class="fa-solid fa-dollar-sign"></i></div>
+            <div class="metric-info">
+              <h5>Total Sales</h5>
+              <div class="metric-val">$128,450</div>
+              <span class="metric-trend up"><i class="fa-solid fa-arrow-up"></i> +18.4%</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box gold"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="metric-info">
+              <h5>Total Orders</h5>
+              <div class="metric-val">2,840</div>
+              <span class="metric-trend up"><i class="fa-solid fa-arrow-up"></i> +12.1%</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box purple"><i class="fa-solid fa-pump-soap"></i></div>
+            <div class="metric-info">
+              <h5>Total Products</h5>
+              <div class="metric-val">156</div>
+              <span class="metric-trend up">14 Categories</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box blue"><i class="fa-solid fa-users"></i></div>
+            <div class="metric-info">
+              <h5>Total Customers</h5>
+              <div class="metric-val">8,920</div>
+              <span class="metric-trend up"><i class="fa-solid fa-arrow-up"></i> +8.5%</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box rose"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="metric-info">
+              <h5>Pending Orders</h5>
+              <div class="metric-val">42</div>
+              <span class="metric-trend down">Requires Prep</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box dark"><i class="fa-solid fa-truck-ramp-box"></i></div>
+            <div class="metric-info">
+              <h5>Completed Deliveries</h5>
+              <div class="metric-val">2,764</div>
+              <span class="metric-trend up">97.3% on time</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Overview Charts (Line, Bar, Doughnut, Pie) -->
+        <div class="charts-grid-2">
+          <!-- Chart 1: Sales Performance Line Chart -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <h3>Sales Performance ($)</h3>
+                <p style="font-size: 12px; color: #64748b;">Monthly revenue vs previous month target</p>
+              </div>
+              <span style="font-size: 11px; background: #eaf1ed; color: var(--color-forest-green); padding: 4px 10px; border-radius: 9999px; font-weight: 600;">2026 Live</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="overviewSalesChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Product Category Doughnut Chart -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <h3>Category Share (%)</h3>
+                <p style="font-size: 12px; color: #64748b;">Sales split by skincare formula</p>
+              </div>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="overviewCategoryChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid-equal">
+          <!-- Chart 3: Order Growth Bar Chart -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <h3>Order Growth by Week</h3>
+                <p style="font-size: 12px; color: #64748b;">Weekly order volume processed</p>
+              </div>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="overviewOrderBarChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 4: Customer Acquisition Pie Chart -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div>
+                <h3>Customer Acquisition</h3>
+                <p style="font-size: 12px; color: #64748b;">New vs Returning subscribers</p>
+              </div>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="overviewCustomerPieChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Table -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>Recent Store Orders</h3>
+              <p style="font-size: 13px; color: #64748b;">Real-time orders placed across website storefront.</p>
+            </div>
+            <button type="button" class="btn-pill-sm" onclick="window.location.href='404.html'">View All Orders <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Products</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">#STK-2940</td>
+                  <td>Sarah Miller</td>
+                  <td>The Lily Ritual Set (x1)</td>
+                  <td>Oct 26, 2026</td>
+                  <td style="font-weight: 600;">$89.00</td>
+                  <td><span class="status-badge processing"><i class="fa-solid fa-spinner"></i> Processing</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View details" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Print Invoice" onclick="window.location.href='404.html'"><i class="fa-solid fa-print"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">#STK-2939</td>
+                  <td>Elena Rostova</td>
+                  <td>Botanical Glow Facial Oil (x2)</td>
+                  <td>Oct 26, 2026</td>
+                  <td style="font-weight: 600;">$96.00</td>
+                  <td><span class="status-badge shipped"><i class="fa-solid fa-truck-fast"></i> Shipped</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View details" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Print Invoice" onclick="window.location.href='404.html'"><i class="fa-solid fa-print"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">#STK-2938</td>
+                  <td>Marcus Thorne</td>
+                  <td>Hydrating Night Elixir (x1), Jade Set (x1)</td>
+                  <td>Oct 25, 2026</td>
+                  <td style="font-weight: 600;">$116.00</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View details" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Print Invoice" onclick="window.location.href='404.html'"><i class="fa-solid fa-print"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">#STK-2937</td>
+                  <td>Jessica Taylor</td>
+                  <td>Purifying Gel Cleanser (x1)</td>
+                  <td>Oct 25, 2026</td>
+                  <td style="font-weight: 600;">$38.00</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View details" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Print Invoice" onclick="window.location.href='404.html'"><i class="fa-solid fa-print"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Best-Selling Products & Customer Reviews Split -->
+        <div class="admin-overview-split-grid">
+          <!-- Best-Selling Skincare Products List -->
+          <div class="dashboard-table-card" style="margin-bottom: 0;">
+            <div class="table-header-row">
+              <h3>Best-Selling Skincare Products</h3>
+              <span style="font-size: 12px; color: var(--color-forest-green); font-weight: 600;">Top Performers</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #f8fafc; border-radius: var(--radius-md);">
+                <div class="table-product-cell">
+                  <div class="table-product-thumb"><img src="assets/images/lily_ritual_set.webp" alt="The Lily Ritual Set"></div>
+                  <div>
+                    <h5 style="font-size: 13px; font-weight: 600; color: var(--color-text-dark);">The Lily Ritual Set</h5>
+                    <p style="font-size: 11px; color: #64748b;">Ceramide & White Lily</p>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-weight: 600; font-size: 13px; color: var(--color-forest-green);">$89.00</span>
+                  <div style="font-size: 11px; color: #64748b;">1,420 Sold</div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #f8fafc; border-radius: var(--radius-md);">
+                <div class="table-product-cell">
+                  <div class="table-product-thumb"><img src="assets/images/product_oil.webp" alt="Botanical Glow Facial Oil"></div>
+                  <div>
+                    <h5 style="font-size: 13px; font-weight: 600; color: var(--color-text-dark);">Botanical Glow Facial Oil</h5>
+                    <p style="font-size: 11px; color: #64748b;">Organic Cold-Pressed</p>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-weight: 600; font-size: 13px; color: var(--color-forest-green);">$48.00</span>
+                  <div style="font-size: 11px; color: #64748b;">980 Sold</div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #f8fafc; border-radius: var(--radius-md);">
+                <div class="table-product-cell">
+                  <div class="table-product-thumb"><img src="assets/images/product_cleanser.webp" alt="Purifying Gel Cleanser"></div>
+                  <div>
+                    <h5 style="font-size: 13px; font-weight: 600; color: var(--color-text-dark);">Purifying Gel Cleanser</h5>
+                    <p style="font-size: 11px; color: #64748b;">Gentle botanical wash</p>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-weight: 600; font-size: 13px; color: var(--color-forest-green);">$38.00</span>
+                  <div style="font-size: 11px; color: #64748b;">840 Sold</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Reviews Feed -->
+          <div class="dashboard-table-card" style="margin-bottom: 0;">
+            <div class="table-header-row">
+              <h3>Recent Customer Reviews</h3>
+              <span style="font-size: 11px; color: var(--color-accent-gold); white-space: nowrap;"><i class="fa-solid fa-star"></i> 4.9 Average</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="padding: 12px; background: #f8fafc; border-radius: var(--radius-md); font-size: 12px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <strong style="color: var(--color-text-dark);">Sarah M.</strong>
+                  <span style="color: var(--color-accent-gold); white-space: nowrap;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                </div>
+                <p style="color: #475569; font-style: italic;">&ldquo;Completely cured my dry patches within two weeks!&rdquo;</p>
+              </div>
+
+              <div style="padding: 12px; background: #f8fafc; border-radius: var(--radius-md); font-size: 12px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <strong style="color: var(--color-text-dark);">Jessica T.</strong>
+                  <span style="color: var(--color-accent-gold); white-space: nowrap;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                </div>
+                <p style="color: #475569; font-style: italic;">&ldquo;Lightweight oil that gives genuine glass skin finish.&rdquo;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 2: PRODUCTS MANAGEMENT (EXTENSIVE SCROLLABLE CONTENT)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-products">
+        <!-- Metric Cards -->
+        <div class="dashboard-stats-grid">
+          <div class="stat-metric-card">
+            <div class="metric-icon-box green"><i class="fa-solid fa-box-archive"></i></div>
+            <div class="metric-info">
+              <h5>Total Products</h5>
+              <div class="metric-val">156</div>
+              <span class="metric-trend up">14 Skincare Categories</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box blue"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="metric-info">
+              <h5>Available In Stock</h5>
+              <div class="metric-val">142</div>
+              <span class="metric-trend up">Ready to Dispatch</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box gold"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="metric-info">
+              <h5>Low Stock Alerts</h5>
+              <div class="metric-val">10</div>
+              <span class="metric-trend down">Restock Needed</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box rose"><i class="fa-solid fa-circle-xmark"></i></div>
+            <div class="metric-info">
+              <h5>Out of Stock</h5>
+              <div class="metric-val">4</div>
+              <span class="metric-trend down">Production in Progress</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Product Charts (Bar, Pie, Doughnut) -->
+        <div class="charts-grid-2">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Product Sales Performance by Formula</h3>
+              <span style="font-size: 11px; color: #64748b;">Units sold past 30 days</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="productSalesChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Inventory Availability</h3>
+              <span style="font-size: 11px; color: #64748b;">Stock distribution</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="productAvailabilityChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Table with Search & Filter -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>All Skincare Products Catalog</h3>
+              <p style="font-size: 13px; color: #64748b;">Search, filter, view, edit or manage product inventory.</p>
+            </div>
+            <div class="table-toolbar">
+              <div class="search-input-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="productSearchInput" placeholder="Search product name..." onkeyup="filterProductsTable()">
+              </div>
+              <select class="select-filter" id="productCategoryFilter" onchange="filterProductsTable()">
+                <option value="all">All Categories</option>
+                <option value="Cleanser">Facial Cleansers</option>
+                <option value="Serum">Serums & Oils</option>
+                <option value="Ritual Set">Ritual Sets</option>
+                <option value="Moisturizer">Moisturizers</option>
+                <option value="Mask">Face Masks</option>
+                <option value="Sunscreen">Sunscreens</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table" id="productsMasterTable">
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Date Added</th>
+                  <th>Status</th>
+                  <th>Sales</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_cleanser.webp" alt="Purifying Gel Cleanser"></div>
+                      <div>
+                        <strong>Purifying Gel Cleanser</strong>
+                        <div style="font-size: 11px; color: #64748b;">SKU-CLEAN-01</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Facial Cleansers</td>
+                  <td style="font-weight: 600;">$38.00</td>
+                  <td>142 units</td>
+                  <td>Jan 12, 2026</td>
+                  <td><span class="status-badge in-stock">In Stock</span></td>
+                  <td>840</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Edit" onclick="window.location.href='404.html'"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="action-btn btn-delete" title="Delete" onclick="window.location.href='404.html'"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_duo.webp" alt="Hydrating Night Elixir"></div>
+                      <div>
+                        <strong>Hydrating Night Elixir</strong>
+                        <div style="font-size: 11px; color: #64748b;">SKU-SERUM-02</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Serums & Oils</td>
+                  <td style="font-weight: 600;">$54.00</td>
+                  <td>88 units</td>
+                  <td>Feb 04, 2026</td>
+                  <td><span class="status-badge in-stock">In Stock</span></td>
+                  <td>620</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Edit" onclick="window.location.href='404.html'"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="action-btn btn-delete" title="Delete" onclick="window.location.href='404.html'"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_oil.webp" alt="Botanical Glow Facial Oil"></div>
+                      <div>
+                        <strong>Botanical Glow Facial Oil</strong>
+                        <div style="font-size: 11px; color: #64748b;">SKU-OIL-03</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Serums & Oils</td>
+                  <td style="font-weight: 600;">$48.00</td>
+                  <td>15 units</td>
+                  <td>Jan 20, 2026</td>
+                  <td><span class="status-badge low-stock">Low Stock</span></td>
+                  <td>980</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Edit" onclick="window.location.href='404.html'"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="action-btn btn-delete" title="Delete" onclick="window.location.href='404.html'"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/lily_ritual_set.webp" alt="The Lily Ritual Set"></div>
+                      <div>
+                        <strong>The Lily Ritual Set</strong>
+                        <div style="font-size: 11px; color: #64748b;">SKU-SET-04</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Ritual Sets</td>
+                  <td style="font-weight: 600;">$89.00</td>
+                  <td>260 units</td>
+                  <td>Mar 15, 2026</td>
+                  <td><span class="status-badge in-stock">In Stock</span></td>
+                  <td>1,420</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Edit" onclick="window.location.href='404.html'"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="action-btn btn-delete" title="Delete" onclick="window.location.href='404.html'"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="table-product-cell">
+                      <div class="table-product-thumb"><img src="assets/images/product_roller_set.webp" alt="Rejuvenating Jade Ritual Set"></div>
+                      <div>
+                        <strong>Rejuvenating Jade Ritual Set</strong>
+                        <div style="font-size: 11px; color: #64748b;">SKU-SET-05</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Ritual Sets</td>
+                  <td style="font-weight: 600;">$62.00</td>
+                  <td>0 units</td>
+                  <td>Feb 28, 2026</td>
+                  <td><span class="status-badge out-of-stock">Out of Stock</span></td>
+                  <td>510</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                      <button class="action-btn" title="Edit" onclick="window.location.href='404.html'"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="action-btn btn-delete" title="Delete" onclick="window.location.href='404.html'"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 3: CUSTOMERS MANAGEMENT (EXTENSIVE SCROLLABLE CONTENT)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-customers">
+        <div class="dashboard-stats-grid">
+          <div class="stat-metric-card">
+            <div class="metric-icon-box blue"><i class="fa-solid fa-users"></i></div>
+            <div class="metric-info">
+              <h5>Total Customers</h5>
+              <div class="metric-val">8,920</div>
+              <span class="metric-trend up">+14% YoY</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box green"><i class="fa-solid fa-user-plus"></i></div>
+            <div class="metric-info">
+              <h5>New This Month</h5>
+              <div class="metric-val">480</div>
+              <span class="metric-trend up">+22% Acquisition</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box purple"><i class="fa-solid fa-repeat"></i></div>
+            <div class="metric-info">
+              <h5>Returning Members</h5>
+              <div class="metric-val">6,420</div>
+              <span class="metric-trend up">72% Retention</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box gold"><i class="fa-solid fa-crown"></i></div>
+            <div class="metric-info">
+              <h5>Active VIP Glow Club</h5>
+              <div class="metric-val">2,020</div>
+              <span class="metric-trend up">High LTV</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid-equal">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Monthly Customer Growth</h3>
+              <span style="font-size: 11px; color: #64748b;">Active accounts</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="customerGrowthChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Customer Skin Concern Segments</h3>
+              <span style="font-size: 11px; color: #64748b;">Profiles recorded</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="customerConcernChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Customers Table -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>Customer Profiles & Orders History</h3>
+              <p style="font-size: 13px; color: #64748b;">View subscriber contact info, lifetime spend, and orders.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Total Orders</th>
+                  <th>Total Spent</th>
+                  <th>Last Order</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <div class="author-avatar" style="width: 34px; height: 34px;"><img src="assets/images/avatar_sarah.webp" alt="Sarah M."></div>
+                      <strong>Sarah Miller</strong>
+                    </div>
+                  </td>
+                  <td>sarah.m@example.com</td>
+                  <td>9876543210</td>
+                  <td style="font-weight: 600;">6 orders</td>
+                  <td style="font-weight: 600; color: var(--color-forest-green);">$524.00</td>
+                  <td>Oct 26, 2026</td>
+                  <td><span class="status-badge active"><i class="fa-solid fa-circle-check"></i> VIP Member</span></td>
+                  <td>
+                    <button class="action-btn" title="View Customer Profile" onclick="window.location.href='404.html'"><i class="fa-solid fa-user"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <div class="author-avatar" style="width: 34px; height: 34px;"><img src="assets/images/avatar_jessica.webp" alt="Jessica T."></div>
+                      <strong>Jessica Taylor</strong>
+                    </div>
+                  </td>
+                  <td>jessica.t@example.com</td>
+                  <td>9876543211</td>
+                  <td style="font-weight: 600;">11 orders</td>
+                  <td style="font-weight: 600; color: var(--color-forest-green);">$940.00</td>
+                  <td>Oct 25, 2026</td>
+                  <td><span class="status-badge active"><i class="fa-solid fa-circle-check"></i> VIP Member</span></td>
+                  <td>
+                    <button class="action-btn" title="View Customer Profile" onclick="window.location.href='404.html'"><i class="fa-solid fa-user"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <div class="author-avatar" style="width: 34px; height: 34px;"><img src="assets/images/avatar_elena.webp" alt="Elena K."></div>
+                      <strong>Elena Rostova</strong>
+                    </div>
+                  </td>
+                  <td>elena.r@example.com</td>
+                  <td>9876543212</td>
+                  <td style="font-weight: 600;">4 orders</td>
+                  <td style="font-weight: 600; color: var(--color-forest-green);">$318.00</td>
+                  <td>Oct 26, 2026</td>
+                  <td><span class="status-badge delivered">Active</span></td>
+                  <td>
+                    <button class="action-btn" title="View Customer Profile" onclick="window.location.href='404.html'"><i class="fa-solid fa-user"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 4: ORDERS MANAGEMENT (EXTENSIVE SCROLLABLE CONTENT)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-orders">
+        <div class="dashboard-stats-grid">
+          <div class="stat-metric-card">
+            <div class="metric-icon-box dark"><i class="fa-solid fa-receipt"></i></div>
+            <div class="metric-info">
+              <h5>Total Orders</h5>
+              <div class="metric-val">2,840</div>
+              <span class="metric-trend up">All Channels</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box gold"><i class="fa-solid fa-clock"></i></div>
+            <div class="metric-info">
+              <h5>Processing / Prep</h5>
+              <div class="metric-val">42</div>
+              <span class="metric-trend down">Awaiting Dispatch</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box green"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="metric-info">
+              <h5>In Transit</h5>
+              <div class="metric-val">88</div>
+              <span class="metric-trend up">Courier Dispatched</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box rose"><i class="fa-solid fa-ban"></i></div>
+            <div class="metric-info">
+              <h5>Cancelled Orders</h5>
+              <div class="metric-val">30</div>
+              <span class="metric-trend down">1.05% Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid-2">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Monthly Orders Volume</h3>
+              <span style="font-size: 11px; color: #64748b;">Orders trajectory</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="ordersGrowthChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Fulfillment Status Split</h3>
+              <span style="font-size: 11px; color: #64748b;">Current batch states</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="ordersStatusDoughnut"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="dashboard-table-card">
+          <div class="table-header-row">
+            <div>
+              <h3>All Customer Orders</h3>
+              <p style="font-size: 13px; color: #64748b;">Filter by payment and delivery status.</p>
+            </div>
+            <div class="table-toolbar">
+              <select class="select-filter" id="orderStatusFilter" onchange="filterOrdersTable()">
+                <option value="all">All Statuses</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Processing">Processing</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive-wrapper">
+            <table class="dashboard-table" id="ordersMasterTable">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Items</th>
+                  <th>Order Date</th>
+                  <th>Total Amount</th>
+                  <th>Payment Status</th>
+                  <th>Delivery Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">#STK-2940</td>
+                  <td>Sarah Miller</td>
+                  <td>The Lily Ritual Set (x1)</td>
+                  <td>Oct 26, 2026</td>
+                  <td style="font-weight: 600;">$89.00</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid (Stripe)</span></td>
+                  <td><span class="status-badge processing"><i class="fa-solid fa-spinner"></i> Processing</span></td>
+                  <td>
+                    <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="font-weight: 600;">#STK-2939</td>
+                  <td>Elena Rostova</td>
+                  <td>Botanical Glow Facial Oil (x2)</td>
+                  <td>Oct 26, 2026</td>
+                  <td style="font-weight: 600;">$96.00</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid (PayPal)</span></td>
+                  <td><span class="status-badge shipped"><i class="fa-solid fa-truck-fast"></i> Shipped</span></td>
+                  <td>
+                    <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="font-weight: 600;">#STK-2938</td>
+                  <td>Marcus Thorne</td>
+                  <td>Hydrating Night Elixir (x1), Jade Set (x1)</td>
+                  <td>Oct 25, 2026</td>
+                  <td style="font-weight: 600;">$116.00</td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-check"></i> Paid (ApplePay)</span></td>
+                  <td><span class="status-badge delivered"><i class="fa-solid fa-circle-check"></i> Delivered</span></td>
+                  <td>
+                    <button class="action-btn" title="View" onclick="window.location.href='404.html'"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 5: ANALYTICS (EXTENSIVE SCROLLABLE CONTENT)
+           ========================================================================== -->
+      <section class="tab-pane" id="tab-analytics">
+        <div class="dashboard-stats-grid">
+          <div class="stat-metric-card">
+            <div class="metric-icon-box green"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="metric-info">
+              <h5>Store Revenue</h5>
+              <div class="metric-val">$128,450</div>
+              <span class="metric-trend up">+24.5% Growth</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box gold"><i class="fa-solid fa-basket-shopping"></i></div>
+            <div class="metric-info">
+              <h5>Average Order (AOV)</h5>
+              <div class="metric-val">$68.50</div>
+              <span class="metric-trend up">+8.2% vs Last Mo</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box purple"><i class="fa-solid fa-filter-circle-dollar"></i></div>
+            <div class="metric-info">
+              <h5>Conversion Rate</h5>
+              <div class="metric-val">3.8%</div>
+              <span class="metric-trend up">Top 10% Industry</span>
+            </div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="metric-icon-box blue"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+            <div class="metric-info">
+              <h5>Return Rate</h5>
+              <div class="metric-val">0.6%</div>
+              <span class="metric-trend down">Exceptional</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Large Analytics Charts -->
+        <div class="chart-card" style="margin-bottom: 24px;">
+          <div class="chart-card-header">
+            <div>
+              <h3>Annual Revenue & Gross Margin Trajectory (2026)</h3>
+              <p style="font-size: 13px; color: #64748b;">Comprehensive sales tracking across global retail and subscription channels.</p>
+            </div>
+            <span style="font-size: 12px; font-weight: 600; color: var(--color-forest-green);"><i class="fa-solid fa-circle-check"></i> Audited Financials</span>
+          </div>
+          <div class="chart-canvas-wrapper" style="height: 340px;">
+            <canvas id="largeAnalyticsChart"></canvas>
+          </div>
+        </div>
+
+        <div class="charts-grid-equal">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Marketing Traffic & Channels</h3>
+              <p style="font-size: 12px; color: #64748b;">Where our skincare community discovers us</p>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="trafficSourcesChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Delivery & Logistics Timeliness</h3>
+              <p style="font-size: 12px; color: #64748b;">Carrier performance metrics</p>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="deliverySpeedChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  </div>
+
+  <script>
+    // --- Admin Sidebar Content Toggling System (5 Options Only) ---
+    const navItems = document.querySelectorAll('.dashboard-nav-item[data-tab]');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    const topbarTitle = document.getElementById('topbar-page-title');
+    const sidebar = document.getElementById('admin-sidebar');
+    const sidebarToggle = document.getElementById('admin-sidebar-toggle');
+    const sidebarBackdrop = document.getElementById('admin-sidebar-backdrop');
+
+    const tabDescriptions = {
+      'tab-overview': { title: 'Dashboard Overview' },
+      'tab-products': { title: 'Products' },
+      'tab-customers': { title: 'Customers' },
+      'tab-orders': { title: 'Orders' },
+      'tab-analytics': { title: 'Analytics' }
+    };
+
+    function switchAdminTab(targetTabId) {
+      navItems.forEach(item => {
+        if (item.getAttribute('data-tab') === targetTabId) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      tabPanes.forEach(pane => {
+        if (pane.id === targetTabId) {
+          pane.classList.add('active');
+        } else {
+          pane.classList.remove('active');
+        }
+      });
+
+      if (tabDescriptions[targetTabId]) {
+        topbarTitle.textContent = tabDescriptions[targetTabId].title;
+      }
+
+      // Ensure tab contents always show from the starting point (top)
+      const adminMain = document.querySelector('.dashboard-main');
+      if (adminMain) adminMain.scrollTop = 0;
+      const adminContent = document.querySelector('.dashboard-content');
+      if (adminContent) adminContent.scrollTop = 0;
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      const targetPane = document.getElementById(targetTabId);
+      if (targetPane) targetPane.scrollTop = 0;
+
+      closeAdminSidebar();
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+        if (typeof Chart !== 'undefined' && Chart.instances) {
+          Object.values(Chart.instances).forEach(c => c && c.resize && c.resize());
+        }
+      }, 60);
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 250);
+    }
+
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabId = item.getAttribute('data-tab');
+        switchAdminTab(tabId);
+      });
+    });
+
+    // Functions to open/close mobile sidebar and stop background scrolling
+    function openAdminSidebar() {
+      sidebar.classList.add('mobile-open');
+      sidebarBackdrop?.classList.add('active');
+      document.body.classList.add('dashboard-sidebar-open');
+      document.documentElement.classList.add('dashboard-sidebar-open');
+    }
+
+    function closeAdminSidebar() {
+      sidebar.classList.remove('mobile-open');
+      sidebarBackdrop?.classList.remove('active');
+      document.body.classList.remove('dashboard-sidebar-open');
+      document.documentElement.classList.remove('dashboard-sidebar-open');
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+    }
+
+    const adminSidebarClose = document.getElementById('admin-sidebar-close');
+
+    adminSidebarClose?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeAdminSidebar();
+    });
+
+    sidebarToggle?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (sidebar.classList.contains('mobile-open')) {
+        closeAdminSidebar();
+      } else {
+        openAdminSidebar();
+      }
+    });
+
+    sidebarBackdrop?.addEventListener('click', () => {
+      closeAdminSidebar();
+    });
+
+    // Stop background touch scrolling when mobile sidebar is open
+    window.addEventListener('touchmove', (e) => {
+      if (sidebar.classList.contains('mobile-open') && !sidebar.contains(e.target)) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Scroll restoration: exact section & active tab when back from 404, top on reload
+    (function() {
+      const isBackFrom404 = sessionStorage.getItem('stackly_is_back_from_404') === 'true';
+      const savedAdminScroll = sessionStorage.getItem('stackly_admin_scroll');
+      const savedAdminTab = sessionStorage.getItem('stackly_admin_active_tab');
+
+      const navEntry = window.performance && performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      const isReload = (navEntry && navEntry.type === 'reload') || (window.performance && performance.navigation && performance.navigation.type === 1);
+
+      if (isReload) {
+        sessionStorage.removeItem('stackly_is_back_from_404');
+        sessionStorage.removeItem('stackly_admin_scroll');
+        sessionStorage.removeItem('stackly_admin_active_tab');
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('load', () => {
+          window.scrollTo(0, 0);
+          const m = document.querySelector('.dashboard-main');
+          if (m) m.scrollTop = 0;
+        });
+      } else if (isBackFrom404) {
+        // Restore active tab first if specified
+        if (savedAdminTab && typeof switchAdminTab === 'function') {
+          switchAdminTab(savedAdminTab);
+        }
+
+        if (savedAdminScroll !== null) {
+          const targetY = parseInt(savedAdminScroll, 10);
+          const restoreDash = () => {
+            const m = document.querySelector('.dashboard-main');
+            if (m) {
+              m.style.setProperty('scroll-behavior', 'auto', 'important');
+              m.scrollTop = targetY;
+            }
+          };
+          restoreDash();
+          window.addEventListener('DOMContentLoaded', restoreDash);
+          window.addEventListener('pageshow', restoreDash);
+          if (window.requestAnimationFrame) window.requestAnimationFrame(restoreDash);
+          window.addEventListener('load', () => {
+            restoreDash();
+            sessionStorage.removeItem('stackly_is_back_from_404');
+            sessionStorage.removeItem('stackly_admin_scroll');
+            sessionStorage.removeItem('stackly_admin_active_tab');
+            const m = document.querySelector('.dashboard-main');
+            if (m) m.style.removeProperty('scroll-behavior');
+          });
+        }
+      }
+    })();
+
+    // Route all buttons & links inside dashboard-content to 404.html without alert/popup
+    const adminDashboardContent = document.querySelector('.dashboard-content');
+    if (adminDashboardContent) {
+      adminDashboardContent.addEventListener('click', (e) => {
+        const clickable = e.target.closest('button, a');
+        if (clickable) {
+          e.preventDefault();
+          e.stopPropagation();
+          const m = document.querySelector('.dashboard-main');
+          const activeTabItem = document.querySelector('.admin-nav-item.active, .dashboard-nav-item.active');
+          const activeTab = activeTabItem ? activeTabItem.getAttribute('data-tab') : 'tab-admin-overview';
+          sessionStorage.setItem('stackly_is_back_from_404', 'true');
+          sessionStorage.setItem('stackly_404_prev_url', window.location.href);
+          sessionStorage.setItem('stackly_admin_active_tab', activeTab);
+          sessionStorage.setItem('stackly_admin_scroll', String(m ? m.scrollTop : 0));
+          window.location.href = '404.html';
+        }
+      }, true);
+    }
+
+    // --- Load Admin Auth Credentials from Login Page (Blue Marked Area) ---
+    function loadAdminAuthData() {
+      const storedEmail = localStorage.getItem('stackly_auth_email') || 'admin@stackly.com';
+      const storedRole = localStorage.getItem('stackly_auth_role') || 'admin';
+      let storedRoleName = 'Admin Dashboard';
+      const emailInitial = (storedEmail.charAt(0) || 'A').toUpperCase();
+
+      const topbarName = document.getElementById('admin-topbar-name');
+      const topbarEmail = document.getElementById('admin-topbar-email');
+      const topbarAvatar = document.getElementById('admin-topbar-avatar');
+      if (topbarName) topbarName.textContent = storedRoleName;
+      if (topbarEmail) topbarEmail.textContent = storedEmail;
+      if (topbarAvatar) topbarAvatar.textContent = emailInitial;
+
+      const sidebarName = document.getElementById('admin-sidebar-name');
+      const sidebarEmail = document.getElementById('admin-sidebar-email');
+      const sidebarAvatar = document.getElementById('admin-sidebar-avatar');
+      if (sidebarName) sidebarName.textContent = storedRoleName;
+      if (sidebarEmail) sidebarEmail.textContent = storedEmail;
+      if (sidebarAvatar) sidebarAvatar.textContent = emailInitial;
+    }
+
+    // --- Chart.js Data Visualizations ---
+    function initAllAdminDashboard() {
+      loadAdminAuthData();
+      initOverviewCharts();
+      initProductCharts();
+      initCustomerCharts();
+      initOrdersCharts();
+      initAnalyticsCharts();
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initAllAdminDashboard);
+    } else {
+      initAllAdminDashboard();
+    }
+
+    function initOverviewCharts() {
+      // 1. Monthly Field Output Distribution Bar Chart (Website Palette: Forest Green)
+      const ctxField = document.getElementById('monthlyFieldOutputChartAdmin')?.getContext('2d');
+      if (ctxField) {
+        new Chart(ctxField, {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+              label: 'Output Distribution',
+              data: [4, 8, 6, 12, 5, 7],
+              backgroundColor: '#1e4338',
+              hoverBackgroundColor: '#153229',
+              borderRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 14,
+                ticks: { stepSize: 2, color: '#7a756d', font: { size: 11 } },
+                grid: { color: '#ece8e1' }
+              },
+              x: {
+                ticks: { color: '#7a756d', font: { size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // 2. Operational Focus Allocation Doughnut Chart (Website Palette: Forest Green, Gold, Noir)
+      const ctxFocus = document.getElementById('operationalFocusChartAdmin')?.getContext('2d');
+      if (ctxFocus) {
+        new Chart(ctxFocus, {
+          type: 'doughnut',
+          data: {
+            labels: ['Beach Cleans', 'Awareness Ops', 'Fund Pools'],
+            datasets: [{
+              data: [45, 35, 20],
+              backgroundColor: ['#1e4338', '#c5a059', '#181614'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            cutout: '62%'
+          }
+        });
+      }
+
+      // 3. Overview Sales Line Chart
+      const ctxSales = document.getElementById('overviewSalesChart')?.getContext('2d');
+      if (ctxSales) {
+        new Chart(ctxSales, {
+          type: 'line',
+          data: {
+            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [{
+              label: 'Sales Revenue ($)',
+              data: [64000, 78000, 89000, 94000, 112000, 128450],
+              borderColor: '#1e4338',
+              backgroundColor: 'rgba(30, 67, 56, 0.08)',
+              borderWidth: 2.5,
+              tension: 0.35,
+              fill: true,
+              pointBackgroundColor: '#1e4338'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: false } }
+          }
+        });
+      }
+
+      // 2. Overview Category Doughnut Chart
+      const ctxCat = document.getElementById('overviewCategoryChart')?.getContext('2d');
+      if (ctxCat) {
+        new Chart(ctxCat, {
+          type: 'doughnut',
+          data: {
+            labels: ['Ritual Sets', 'Serums & Oils', 'Cleansers', 'Moisturizers', 'Sun Care'],
+            datasets: [{
+              data: [38, 28, 16, 12, 6],
+              backgroundColor: ['#1e4338', '#c5a059', '#3b82f6', '#ec4899', '#f97316'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'bottom' } }
+          }
+        });
+      }
+
+      // 3. Overview Order Growth Bar
+      const ctxOrderBar = document.getElementById('overviewOrderBarChart')?.getContext('2d');
+      if (ctxOrderBar) {
+        new Chart(ctxOrderBar, {
+          type: 'bar',
+          data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{
+              label: 'Orders',
+              data: [580, 690, 740, 830],
+              backgroundColor: '#181614',
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } }
+          }
+        });
+      }
+
+      // 4. Customer Acquisition Pie
+      const ctxCustPie = document.getElementById('overviewCustomerPieChart')?.getContext('2d');
+      if (ctxCustPie) {
+        new Chart(ctxCustPie, {
+          type: 'pie',
+          data: {
+            labels: ['Returning Subscribers', 'Organic Search', 'Social Referrals', 'VIP Club'],
+            datasets: [{
+              data: [45, 25, 20, 10],
+              backgroundColor: ['#1e4338', '#9333ea', '#0284c7', '#c5a059'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'bottom' } }
+          }
+        });
+      }
+    }
+
+    function initProductCharts() {
+      // Products Sales Bar
+      const ctxProd = document.getElementById('productSalesChart')?.getContext('2d');
+      if (ctxProd) {
+        new Chart(ctxProd, {
+          type: 'bar',
+          data: {
+            labels: ['Lily Ritual', 'Glow Oil', 'Gel Cleanser', 'Jade Set', 'Night Elixir'],
+            datasets: [{
+              label: 'Units Sold',
+              data: [1420, 980, 840, 510, 620],
+              backgroundColor: '#1e4338',
+              borderRadius: 6
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false }
+        });
+      }
+
+      // Products Availability Doughnut
+      const ctxAvail = document.getElementById('productAvailabilityChart')?.getContext('2d');
+      if (ctxAvail) {
+        new Chart(ctxAvail, {
+          type: 'doughnut',
+          data: {
+            labels: ['In Stock (142)', 'Low Stock (10)', 'Out of Stock (4)'],
+            datasets: [{
+              data: [142, 10, 4],
+              backgroundColor: ['#16a34a', '#eab308', '#dc2626'],
+              borderWidth: 0
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+      }
+    }
+
+    function initCustomerCharts() {
+      const ctxGrowth = document.getElementById('customerGrowthChart')?.getContext('2d');
+      if (ctxGrowth) {
+        new Chart(ctxGrowth, {
+          type: 'line',
+          data: {
+            labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [{
+              label: 'Subscribers',
+              data: [5400, 6200, 7100, 8100, 8920],
+              borderColor: '#0284c7',
+              backgroundColor: 'rgba(2, 132, 199, 0.08)',
+              fill: true,
+              tension: 0.3
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false }
+        });
+      }
+
+      const ctxConcern = document.getElementById('customerConcernChart')?.getContext('2d');
+      if (ctxConcern) {
+        new Chart(ctxConcern, {
+          type: 'pie',
+          data: {
+            labels: ['Barrier Repair', 'Hydration Deficit', 'Hyperpigmentation', 'Anti-Aging', 'Acne / Sebum'],
+            datasets: [{
+              data: [35, 25, 18, 14, 8],
+              backgroundColor: ['#1e4338', '#0284c7', '#c5a059', '#e11d48', '#8b5cf6'],
+              borderWidth: 0
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+      }
+    }
+
+    function initOrdersCharts() {
+      const ctxOrderGrowth = document.getElementById('ordersGrowthChart')?.getContext('2d');
+      if (ctxOrderGrowth) {
+        new Chart(ctxOrderGrowth, {
+          type: 'line',
+          data: {
+            labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [{
+              label: 'Order Volume',
+              data: [1800, 2050, 2340, 2600, 2840],
+              borderColor: '#1e4338',
+              tension: 0.3
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false }
+        });
+      }
+
+      const ctxOrderStatus = document.getElementById('ordersStatusDoughnut')?.getContext('2d');
+      if (ctxOrderStatus) {
+        new Chart(ctxOrderStatus, {
+          type: 'doughnut',
+          data: {
+            labels: ['Delivered (2,680)', 'Shipped (88)', 'Processing (42)', 'Cancelled (30)'],
+            datasets: [{
+              data: [2680, 88, 42, 30],
+              backgroundColor: ['#16a34a', '#0284c7', '#f59e0b', '#ef4444'],
+              borderWidth: 0
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+      }
+    }
+
+    function initAnalyticsCharts() {
+      const ctxLarge = document.getElementById('largeAnalyticsChart')?.getContext('2d');
+      if (ctxLarge) {
+        new Chart(ctxLarge, {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            datasets: [
+              {
+                label: 'Gross Revenue ($)',
+                data: [42000, 48000, 56000, 61000, 69000, 78000, 89000, 97000, 114000, 128450],
+                borderColor: '#1e4338',
+                backgroundColor: 'rgba(30, 67, 56, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.3
+              },
+              {
+                label: 'Net Profit ($)',
+                data: [21000, 24500, 29000, 31000, 36000, 41000, 48000, 52000, 62000, 71500],
+                borderColor: '#c5a059',
+                borderWidth: 2,
+                borderDash: [5, 5],
+                tension: 0.3
+              }
+            ]
+          },
+          options: { responsive: true, maintainAspectRatio: false }
+        });
+      }
+
+      const ctxTraffic = document.getElementById('trafficSourcesChart')?.getContext('2d');
+      if (ctxTraffic) {
+        new Chart(ctxTraffic, {
+          type: 'pie',
+          data: {
+            labels: ['Direct (Glow Club)', 'Organic Search', 'Instagram / TikTok', 'Affiliate Dermatologists', 'Email Journal'],
+            datasets: [{
+              data: [36, 28, 20, 10, 6],
+              backgroundColor: ['#181614', '#1e4338', '#c5a059', '#0284c7', '#9333ea'],
+              borderWidth: 0
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+      }
+
+      const ctxSpeed = document.getElementById('deliverySpeedChart')?.getContext('2d');
+      if (ctxSpeed) {
+        new Chart(ctxSpeed, {
+          type: 'doughnut',
+          data: {
+            labels: ['Next-Day Dispatch (68%)', '2-Day Standard (28%)', 'Delayed (<4%)'],
+            datasets: [{
+              data: [68, 28, 4],
+              backgroundColor: ['#16a34a', '#0284c7', '#ef4444'],
+              borderWidth: 0
+            }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+      }
+    }
+
+    // --- Table Filtering & Search ---
+    function filterProductsTable() {
+      const search = document.getElementById('productSearchInput').value.toLowerCase();
+      const cat = document.getElementById('productCategoryFilter').value;
+      const rows = document.querySelectorAll('#productsMasterTable tbody tr');
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const matchesSearch = text.includes(search);
+        const matchesCat = cat === 'all' || text.includes(cat.toLowerCase());
+        row.style.display = (matchesSearch && matchesCat) ? '' : 'none';
+      });
+    }
+
+    function filterOrdersTable() {
+      const filter = document.getElementById('orderStatusFilter').value;
+      const rows = document.querySelectorAll('#ordersMasterTable tbody tr');
+
+      rows.forEach(row => {
+        const text = row.textContent;
+        if (filter === 'all' || text.includes(filter)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
